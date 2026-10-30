@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <main className="border border-red-300 flex flex-col min-h-screen">
+    <main className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="border border-blue-300 flex-1">
+      <section className="flex-1">
         <section className="container mx-auto px-4 py-32">
           <article className="border border-green-700 mx-auto max-w-4xl text-center">
             <h1 className="text-gray-900 mb-6 text-6xl font-bold leading-tight">
@@ -16,9 +17,12 @@ export default function LandingPage() {
             </p>
 
             <section className="flex flex-col items-center gap-4">
-              <Button size="lg" className="h-12 px-8 text-lg font-medium">
-                Start for free <ArrowRight className="ml-1" />
-              </Button>
+              <Link href="/sign-up">
+                <Button size="lg" className="h-12 px-8 text-lg font-medium">
+                  Start for free <ArrowRight className="ml-1" />
+                </Button>
+              </Link>
+
               <p className="text-sm text-muted-foreground">
                 Free forever. No credit card required.
               </p>
