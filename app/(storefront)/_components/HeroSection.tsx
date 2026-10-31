@@ -1,4 +1,6 @@
-import AuthButtons from "./AuthButtons";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 function HeroSection() {
   return (
@@ -12,7 +14,20 @@ function HeroSection() {
             Capture, organize, and manage your inventory in one place
           </p>
 
-          <AuthButtons />
+          <section className="flex flex-col items-center gap-4">
+            <Link href="/sign-up">
+              <Button
+                size="lg"
+                className="h-12 px-8 text-lg font-medium hover:cursor-pointer"
+              >
+                Start for free <ArrowRight className="ml-1" />
+              </Button>
+            </Link>
+
+            <p className="text-sm text-muted-foreground">
+              Free forever. No credit card required.
+            </p>
+          </section>
         </article>
       </section>
     </section>

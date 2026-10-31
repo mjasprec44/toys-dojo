@@ -5,15 +5,15 @@ import { useState } from "react";
 
 const ImageTabs = [
   {
-    buttonText: "Organize Applications",
+    buttonText: "My Collection",
     imgSrc: "/hero-images/hero1.png",
   },
   {
-    buttonText: "Buy And Sell Your Products",
+    buttonText: "Market Place",
     imgSrc: "/hero-images/hero2.png",
   },
   {
-    buttonText: "Manage Your Products",
+    buttonText: "My Listings",
     imgSrc: "/hero-images/hero3.png",
   },
 ];
@@ -39,6 +39,7 @@ function ImageSectionTabs() {
               aria-controls="feature-panel"
               variant={activeIndex === index ? "default" : "outline"}
               onClick={() => setActiveIndex(index)}
+              className="hover:cursor-pointer"
             >
               {tab.buttonText}
             </Button>
@@ -49,7 +50,7 @@ function ImageSectionTabs() {
           id="feature-panel"
           role="tabpanel"
           aria-labelledby={activeTab.buttonText}
-          className="relative w-full overflow-hidden rounded-lg"
+          className="relative w-full overflow-hidden rounded-lg shadow-xl border border-gray-200"
         >
           <Image
             src={ImageTabs[0].imgSrc}
