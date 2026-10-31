@@ -1,3 +1,4 @@
+import FeaturesSection from "./_components/FeaturesSection";
 import HeroSection from "./_components/HeroSection";
 import ImagesSection from "./_components/ImagesSection";
 
@@ -8,6 +9,8 @@ export default function LandingPage() {
       <HeroSection />
       {/* Hero Images Section */}
       <ImagesSection />
+      {/* Feature Section */}
+      <FeaturesSection />
     </main>
   );
 }
