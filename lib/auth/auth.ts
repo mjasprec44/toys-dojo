@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, User } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 import { getMongoUri } from "../dbConnect";
@@ -13,7 +13,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    onExistingUserSignUp: async ({ user }, request) => {
+    onExistingUserSignUp: async ({ user }: { user: User }) => {
       void sendEmail({
         to: user.email,
         subject: "Sign-up attempt with your email",

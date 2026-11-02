@@ -4,8 +4,8 @@ export const ROUTES = {
   PRODUCTS: "/products",
   CART: "/cart",
   CHECKOUT: "/checkout",
-  SIGNUP: "/sign-up",
-  SIGNIN: "/sign-in",
+  SIGN_UP: "/sign-up",
+  SIGN_IN: "/sign-in",
   ACCOUNT: "/account",
   ADMIN: "/admin",
 } as const;

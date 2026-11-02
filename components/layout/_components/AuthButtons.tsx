@@ -5,7 +5,7 @@ import Link from "next/link";
 function AuthButtons() {
   return (
     <section className="flex items-center gap-3">
-      <Link href={ROUTES.SIGNIN} className="">
+      <Link href={ROUTES.SIGN_IN} className="">
         <Button
           className="text-gray-700 hover:text-black hover:cursor-pointer"
           variant="ghost"
@@ -13,7 +13,7 @@ function AuthButtons() {
           Sign In
         </Button>
       </Link>
-      <Link href={ROUTES.SIGNUP} className="">
+      <Link href={ROUTES.SIGN_UP} className="">
         <Button className="hover:bg-primary/80 hover:cursor-pointer">
           Sign Up
         </Button>

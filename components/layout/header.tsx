@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function Header() {
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="bg-white border-b border-primary/40">
       <section className="container mx-auto h-16 flex items-center justify-between p-4">
         <Link
           href={ROUTES.HOME}
