@@ -1,7 +1,9 @@
 "use client";
-import { ROUTES } from "@/app/constants/route";
+
 import { Form } from "@/components/storefront/Form";
-import { FormValues } from "@/types/form.types";
+import { signIn } from "@/lib/auth/auth-client";
+import { SignInValues } from "@/types/auth.types";
+
 import Link from "next/link";
 import { useState } from "react";
 
@@ -18,14 +20,14 @@ function SIGN_IN() {
     </p>
   );
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (values: SignInValues) => {
     setSubmitting(true);
     setServerError(null);
     try {
-      const res = await fetch(`/api${ROUTES.SIGN_IN}`, {
-        method: "POST",
-      });
+      // const res = await signIn({
+      //   email: values.email,
+      //   password: values.password,
+      // });
     } catch (error) {
       console.error(error);
       setServerError("Something went wrong.");
@@ -49,12 +51,14 @@ function SIGN_IN() {
             type: "email",
             placeholder: "you@example.com",
             required: true,
+            minLength: 2,
           },
           {
             name: "password",
             label: "Password",
             type: "password",
             required: true,
+            minLength: 2,
           },
         ]}
         validate={() => {

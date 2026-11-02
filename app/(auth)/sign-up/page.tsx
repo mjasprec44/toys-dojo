@@ -1,9 +1,15 @@
 "use client";
+import { useState, useRef } from "react";
 import { Form } from "@/components/storefront/Form";
+import { signUp } from "@/lib/auth/auth-client";
+import { SignUpValues } from "@/types/auth.types";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FormHandle } from "@/types/form.types";
 
-function SIGN_UP() {
+function SignUp() {
+  const router = useRouter();
+  const formRef = useRef<FormHandle>(null);
   const [isSubmitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -16,6 +22,30 @@ function SIGN_UP() {
     </p>
   );
 
+  const handleSubmit = async (values: SignUpValues) => {
+    setSubmitting(true);
+    setServerError(null);
+    try {
+      const res = await signUp.email({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      });
+
+      if (res.error) {
+        setServerError(res.error.message ?? "Failed to sign up");
+      } else {
+        formRef.current?.reset();
+        router.push("/");
+      }
+    } catch (error) {
+      console.error(error);
+      setServerError("Something went wrong.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
       <Form
@@ -25,13 +55,20 @@ function SIGN_UP() {
         isSubmitting={isSubmitting}
         serverError={serverError}
         fields={[
-          { name: "name", label: "Full name", type: "text", required: true },
+          {
+            name: "name",
+            label: "Full name",
+            type: "text",
+            required: true,
+            minLength: 2,
+          },
           {
             name: "email",
             label: "Email",
             type: "email",
             placeholder: "you@example.com",
             required: true,
+            minLength: 8,
           },
           {
             name: "password",
@@ -39,6 +76,7 @@ function SIGN_UP() {
             type: "password",
             required: true,
             description: "At least 8 characters.",
+            minLength: 8,
           },
           {
             name: "confirmPassword",
@@ -46,13 +84,7 @@ function SIGN_UP() {
             type: "password",
             required: true,
             description: "Confirm your password.",
-          },
-          {
-            name: "phone",
-            label: "Phone number",
-            type: "tel",
-            required: true,
-            description: "Format: +639123456789",
+            minLength: 8,
           },
         ]}
         validate={(values) => {
@@ -62,36 +94,11 @@ function SIGN_UP() {
           }
           return errors;
         }}
-        onSubmit={async (values) => {
-          // ✅ values is inferred as:
-          // {
-          //   name: string;
-          //   email: string;
-          //   password: string;
-          //   role: string;
-          //   bio: string;
-          //   terms: boolean;
-          // }
-          setSubmitting(true);
-          setServerError(null);
-          try {
-            const res = await fetch("/api/SIGN_UP", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(values),
-            });
-            if (!res.ok) {
-              const data = await res.json();
-              setServerError(data.message ?? "Something went wrong.");
-            }
-          } finally {
-            setSubmitting(false);
-          }
-        }}
+        onSubmit={handleSubmit}
         info={Info}
       />
     </section>
   );
 }
 
-export default SIGN_UP;
+export default SignUp;

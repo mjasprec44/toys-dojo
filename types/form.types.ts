@@ -1,5 +1,9 @@
+import { z } from "zod";
 /* ----------------------------- Field config types ---------------------------- */
-
+export interface FormHandle {
+  /** Reset all fields to their default values and clear errors. */
+  reset: () => void;
+}
 export interface SelectOption {
   label: string;
   value: string;
@@ -22,6 +26,8 @@ export interface InputField extends BaseField {
   numericOnly?: boolean;
   /** Maximum number of characters. */
   maxLength?: number;
+  /** Minimum number of characters. */
+  minLength?: number;
 }
 
 export interface TextareaField extends BaseField {
@@ -65,6 +71,8 @@ export interface FormProps<F extends readonly FieldConfig[]> {
   description?: string;
   fields: F;
   onSubmit: (values: FormValues<F>) => void | Promise<void>;
+  /** Zod schema — takes over validation when provided. */
+  schema?: z.ZodType<FormValues<F>>;
   /**
    * Cross-field validation. Runs on submit, after the built-in
    * required checks. Return a map of field name → error message.
@@ -80,4 +88,6 @@ export interface FormProps<F extends readonly FieldConfig[]> {
   fieldErrors?: Partial<Record<keyof FormValues<F> & string, string>>;
   /** Additional info, shown below the submit button. */
   info?: React.ReactNode;
+  /** Optional ref to call `reset()` imperatively. */
+  ref?: React.Ref<FormHandle>;
 }

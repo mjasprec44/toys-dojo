@@ -1,5 +1,5 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, useImperativeHandle } from "react";
 import {
   Card,
   CardContent,
@@ -13,6 +13,7 @@ import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import type { FormProps, FieldConfig, FormValues } from "@/types";
+import { Spinner } from "../ui/spinner";
 
 /* --------------------------------- Helpers ---------------------------------- */
 
@@ -38,14 +39,28 @@ export function Form<const F extends readonly FieldConfig[]>({
   fields,
   onSubmit,
   submitLabel = "Submit",
+  schema,
   validate: customValidate,
   isSubmitting = false,
   serverError,
   fieldErrors,
   info,
+  ref,
 }: FormProps<F>) {
   const [values, setValues] = useState(() => getInitialValues(fields));
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Expose reset() to the parent
+  useImperativeHandle(
+    ref,
+    () => ({
+      reset: () => {
+        setValues(getInitialValues(fields));
+        setErrors({});
+      },
+    }),
+    [fields],
+  );
 
   const setValue = (name: string, value: string | boolean) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -60,26 +75,41 @@ export function Form<const F extends readonly FieldConfig[]>({
 
   const validate = (): boolean => {
     const next: Record<string, string> = {};
-    // 1. built-in required checks
-    for (const field of fields) {
-      if (!field.required) continue;
-      const value = values[field.name];
-      const isEmpty =
-        field.type === "checkbox"
-          ? value !== true
-          : !String(value ?? "").trim();
-      if (isEmpty) {
-        next[field.name] =
-          field.type === "checkbox"
-            ? `${field.label} must be checked.`
-            : `${field.label} is required.`;
-      }
 
-      // 2. caller's cross-field rules (may overwrite a required message)
-      if (customValidate) {
-        Object.assign(next, customValidate(values as FormValues<F>));
+    if (schema) {
+      // Zod path — full validation
+      const result = schema.safeParse(values);
+      if (!result.success) {
+        for (const issue of result.error.issues) {
+          const key = issue.path[0];
+          if (typeof key === "string" && !next[key]) {
+            next[key] = issue.message;
+          }
+        }
+      }
+    } else {
+      // fallback — built-in required checks
+      for (const field of fields) {
+        if (!field.required) continue;
+        const value = values[field.name];
+        const isEmpty =
+          field.type === "checkbox"
+            ? value !== true
+            : !String(value ?? "").trim();
+        if (isEmpty) {
+          next[field.name] =
+            field.type === "checkbox"
+              ? `${field.label} must be checked.`
+              : `${field.label} is required.`;
+        }
       }
     }
+
+    // Optional extra rules — merge on top
+    if (customValidate) {
+      Object.assign(next, customValidate(values as FormValues<F>));
+    }
+
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -91,7 +121,7 @@ export function Form<const F extends readonly FieldConfig[]>({
   };
 
   return (
-    <Card className="w-full max-w-md border-gray-200 shadow-lg">
+    <Card className="w-full max-w-md border-gray-200 shadow-lg animate-fade-in">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold text-gray-900">
           {title}
@@ -143,7 +173,13 @@ export function Form<const F extends readonly FieldConfig[]>({
               disabled={isSubmitting}
               className="w-full bg-primary text-white hover:bg-primary/90"
             >
-              {isSubmitting ? "Submitting..." : submitLabel}
+              {isSubmitting ? (
+                <>
+                  Submitting <Spinner />
+                </>
+              ) : (
+                submitLabel
+              )}
             </Button>
             {info && info}
           </CardFooter>
@@ -162,6 +198,8 @@ function renderField(
 ) {
   const numericOnly = "numericOnly" in field && field.numericOnly;
   const maxLength = "maxLength" in field && field.maxLength;
+  const minLength = "minLength" in field && field.minLength;
+
   switch (field.type) {
     case "textarea":
       return (
@@ -223,6 +261,7 @@ function renderField(
           type={field.type}
           inputMode={numericOnly ? "numeric" : undefined}
           maxLength={maxLength ? Number(maxLength) : undefined}
+          minLength={minLength ? Number(minLength) : undefined}
           value={String(value ?? "")}
           onChange={(e) => {
             if (numericOnly) {
