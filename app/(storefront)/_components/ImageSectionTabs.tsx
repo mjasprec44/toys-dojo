@@ -60,6 +60,7 @@ function ImageSectionTabs() {
             aria-hidden
             className="w-full h-auto opacity-0"
             priority
+            loading="eager"
           />
           {ImageTabs.map((tab, index) => (
             <Image
@@ -74,6 +75,7 @@ function ImageSectionTabs() {
                   ? "opacity-100"
                   : "opacity-0 pointer-events-none"
               }`}
+              loading={index === 0 ? "eager" : "lazy"}
             />
           ))}
         </section>

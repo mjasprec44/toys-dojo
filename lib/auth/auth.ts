@@ -3,6 +3,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 import { getMongoUri } from "../dbConnect";
 import { sendEmail } from "../email";
+import { nextCookies } from "better-auth/next-js";
 
 const client = new MongoClient(getMongoUri());
 const db = client.db();
@@ -36,10 +37,16 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
     facebook: {
-      clientId: process.env.FACEBOOK_CLIENT_ID as string,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
-      scopes: ["email", "public_profile", "user_friends"], // Overwrites permissions
-      fields: ["user_friends", "name", "picture"], // Extending list of fields
+      clientId: process.env.FACEBOOK_CLIENT_ID! as string,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET! as string,
+      scopes: [
+        "email",
+        "public_profile",
+        "user_link",
+        "user_location",
+        "user_photos",
+      ],
     },
   },
+  plugins: [nextCookies()],
 });
