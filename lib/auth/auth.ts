@@ -4,6 +4,8 @@ import { MongoClient } from "mongodb";
 import { getMongoUri } from "../dbConnect";
 import { sendEmail } from "../email";
 import { nextCookies } from "better-auth/next-js";
+import { headers } from "next/headers";
+import { cache } from "react";
 
 const client = new MongoClient(getMongoUri());
 const db = client.db();
@@ -48,5 +50,23 @@ export const auth = betterAuth({
       ],
     },
   },
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // 5 minutes (adjust based on your security needs)
+    },
+  },
   plugins: [nextCookies()],
+});
+
+/**
+ * Retrieves the session for the current request.
+ * - Uses React's `cache` to deduplicate calls within the same server request.
+ * - Leverages Better Auth's `cookieCache` (if enabled in auth.ts)
+ *   to avoid database hits on subsequent requests.
+ */
+export const getSession = cache(async () => {
+  return await auth.api.getSession({
+    headers: await headers(),
+  });
 });

@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { ROUTES } from "@/app/constants/route";
 import { Bot } from "lucide-react";
 import Navbar from "./navbar";
 import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
 
 function Header() {
   return (
@@ -17,7 +19,9 @@ function Header() {
           </h1>
         </Link>
 
-        <Navbar />
+        <Suspense fallback={<Skeleton className="h-6 w-62.5" />}>
+          <Navbar />
+        </Suspense>
       </section>
     </header>
   );

@@ -8,6 +8,9 @@ export const ROUTES = {
   SIGN_IN: "/sign-in",
   ACCOUNT: "/account",
   ADMIN: "/admin",
+
+  MARKET_PLACE: "/market-place",
+  MY_COLLECTION: "/my-collection",
 } as const;
 
 // Helper for dynamic routes

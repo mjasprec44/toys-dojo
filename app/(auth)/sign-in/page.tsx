@@ -1,23 +1,59 @@
 "use client";
 
 import { Form } from "@/components/storefront/Form";
-import { signIn } from "@/lib/auth/auth-client";
+import { Button } from "@/components/ui/button";
+import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 import { SignInValues } from "@/types/auth.types";
 
 import Link from "next/link";
 import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { SiFacebook } from "react-icons/si";
 
 function SIGN_IN() {
   const [isSubmitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
+  const handleLoginWithGoogle = async () => {
+    await signInWithSocial("google");
+  };
+
+  const handleLoginWithFacebook = async () => {
+    await signInWithSocial("facebook");
+  };
+
   const Info = (
-    <p className="text-sm text-muted-foreground">
-      Don&apos;t have an account?{" "}
-      <Link href="/sign-up" className="text-primary hover:underline">
-        Sign up
-      </Link>
-    </p>
+    <>
+      <section className="w-full space-y-1">
+        <Button
+          className="w-full"
+          variant="outline"
+          onClick={handleLoginWithGoogle}
+        >
+          <div className="flex gap-2 items-center w-45">
+            <FcGoogle />
+            <span className="text-gray-800">Sign in with Google</span>
+          </div>
+        </Button>
+
+        <Button
+          className="w-full"
+          variant="outline"
+          onClick={handleLoginWithFacebook}
+        >
+          <div className="flex gap-2 items-center w-45">
+            <SiFacebook className="text-blue-900" />
+            <span className="text-gray-800">Sign in with Facebook</span>
+          </div>
+        </Button>
+      </section>
+      <p className="text-sm text-muted-foreground">
+        Don&apos;t have an account?{" "}
+        <Link href="/sign-up" className="text-primary hover:underline">
+          Sign up
+        </Link>
+      </p>
+    </>
   );
 
   const handleSubmit = async (values: SignInValues) => {
