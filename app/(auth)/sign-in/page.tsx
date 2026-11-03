@@ -73,7 +73,7 @@ function SIGN_IN() {
   };
 
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
+    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
       <Form
         title="Sign in to your account"
         description="Enter your email and password to sign in."

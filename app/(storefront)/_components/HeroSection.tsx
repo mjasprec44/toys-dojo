@@ -4,10 +4,10 @@ import Link from "next/link";
 
 function HeroSection() {
   return (
-    <section className="flex-1 bg-white py-20">
+    <section className="flex-1 bg-background py-20">
       <section className="container mx-auto px-4 py-32 animate-fade-in">
         <article className="border border-primary/20 mx-auto max-w-4xl text-center p-8 rounded-sm">
-          <h1 className="text-gray-900 mb-6 text-6xl font-bold leading-tight">
+          <h1 className="text-foreground mb-6 text-6xl font-bold leading-tight">
             A better way to buy and sell your collectibles
           </h1>
           <p className="text-muted-foreground mb-8 text-xl">

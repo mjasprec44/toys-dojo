@@ -21,7 +21,7 @@ function NavLinks() {
           <Link href={link.route}>
             <Button
               variant="ghost"
-              className="text-gray-700 hover:text-gray-900"
+              className="text-foreground hover:text-muted-foreground"
             >
               {link.label}
             </Button>

@@ -121,9 +121,9 @@ export function Form<const F extends readonly FieldConfig[]>({
   };
 
   return (
-    <Card className="w-full max-w-md border-gray-200 shadow-lg animate-fade-in">
+    <Card className="w-full max-w-md border-border shadow-lg animate-fade-in">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-gray-900">
+        <CardTitle className="text-2xl font-bold text-foreground">
           {title}
         </CardTitle>
         {description && <CardDescription>{description}</CardDescription>}

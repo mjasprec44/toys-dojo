@@ -84,7 +84,7 @@ function SignUp() {
   };
 
   return (
-    <section className="flex flex-col min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
+    <section className="flex flex-col min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
       <Form
         title="Create your account"
         description="We'll email you a link to verify your address."

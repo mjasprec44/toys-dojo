@@ -5,7 +5,7 @@ import UserMenu from "./_components/UserMenu";
 
 async function Navbar() {
   const session = await getSession();
-  console.log(session);
+
   return (
     <nav className="flex items-center gap-2">
       {session ? (

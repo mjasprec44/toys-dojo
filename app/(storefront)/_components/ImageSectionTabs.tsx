@@ -50,7 +50,7 @@ function ImageSectionTabs() {
           id="feature-panel"
           role="tabpanel"
           aria-labelledby={activeTab.buttonText}
-          className="relative w-full overflow-hidden rounded-lg shadow-xl border border-gray-200"
+          className="relative w-full overflow-hidden rounded-lg shadow-xl border border-border"
         >
           <Image
             src={ImageTabs[0].imgSrc}

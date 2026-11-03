@@ -2,7 +2,7 @@ import { Package, Store, LayoutDashboard } from "lucide-react";
 
 function FeaturesSection() {
   return (
-    <section className="border-t bg-white py-24">
+    <section className="border-t bg-background py-24">
       <div className="container mx-auto px-4">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Feature 1: Listing Management */}
