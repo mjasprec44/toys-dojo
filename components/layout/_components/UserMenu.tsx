@@ -21,6 +21,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ModeToggle } from "./ModeToggle";
 
 type UserProfileProps = {
   userData: UserDataType;
@@ -31,7 +32,10 @@ function UserMenu({ userData }: UserProfileProps) {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="ghost">
+          <Button
+            variant="ghost"
+            className="rounded-full hover:bg-transparent! hover:cursor-pointer"
+          >
             <Avatar>
               <AvatarImage
                 src="https://github.com/shadcn.png"
@@ -62,6 +66,8 @@ function UserMenu({ userData }: UserProfileProps) {
             </div>
           </DropdownMenuLabel>
         </DropdownMenuGroup>
+
+        <ModeToggle />
 
         <SignOutButton />
       </DropdownMenuContent>

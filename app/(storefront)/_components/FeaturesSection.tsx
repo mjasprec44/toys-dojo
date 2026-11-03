@@ -7,10 +7,10 @@ function FeaturesSection() {
         <div className="grid gap-12 md:grid-cols-3">
           {/* Feature 1: Listing Management */}
           <div className="flex flex-col">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20">
               <Package className="h-6 w-6 text-primary" />
             </div>
-            <h3 className="mb-3 text-2xl font-semibold text-black">
+            <h3 className="mb-3 text-2xl font-semibold text-foreground">
               List & Sell Your Figures
             </h3>
             <p className="text-muted-foreground">
@@ -22,10 +22,10 @@ function FeaturesSection() {
 
           {/* Feature 2: The Marketplace */}
           <div className="flex flex-col">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20">
               <Store className="h-6 w-6 text-primary" />
             </div>
-            <h3 className="mb-3 text-2xl font-semibold text-black">
+            <h3 className="mb-3 text-2xl font-semibold text-foreground">
               Explore the Marketplace
             </h3>
             <p className="text-muted-foreground">
@@ -37,10 +37,10 @@ function FeaturesSection() {
 
           {/* Feature 3: User Dashboard */}
           <div className="flex flex-col">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20">
               <LayoutDashboard className="h-6 w-6 text-primary" />
             </div>
-            <h3 className="mb-3 text-2xl font-semibold text-black">
+            <h3 className="mb-3 text-2xl font-semibold text-foreground">
               Manage Your Collection
             </h3>
             <p className="text-muted-foreground">
