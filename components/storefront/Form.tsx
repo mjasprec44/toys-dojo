@@ -171,7 +171,7 @@ export function Form<const F extends readonly FieldConfig[]>({
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary text-white hover:bg-primary/90"
+              className="w-full bg-primary text-white hover:bg-primary/90 hover:cursor-pointer hover:shadow-sm"
             >
               {isSubmitting ? (
                 <>

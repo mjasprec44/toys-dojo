@@ -8,9 +8,19 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserDataType } from "@/types";
+import SignOutButton from "./SignOutButton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type UserProfileProps = {
   userData: UserDataType;
@@ -35,7 +45,26 @@ function UserMenu({ userData }: UserProfileProps) {
           </Button>
         }
       />
-      <DropdownMenuContent></DropdownMenuContent>
+      <DropdownMenuContent className="w-40">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>
+            <div>
+              <p>{userData.name}</p>
+
+              <Tooltip>
+                <TooltipTrigger
+                  render={<p className="truncate">{userData.email}</p>}
+                />
+                <TooltipContent>
+                  <p>{userData.email}</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          </DropdownMenuLabel>
+        </DropdownMenuGroup>
+
+        <SignOutButton />
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 }

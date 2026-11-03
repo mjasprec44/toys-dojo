@@ -26,7 +26,7 @@ function SIGN_IN() {
     <>
       <section className="w-full space-y-1">
         <Button
-          className="w-full"
+          className="w-full hover:cursor-pointer hover:shadow-sm"
           variant="outline"
           onClick={handleLoginWithGoogle}
         >
@@ -37,7 +37,7 @@ function SIGN_IN() {
         </Button>
 
         <Button
-          className="w-full"
+          className="w-full hover:cursor-pointer hover:shadow-sm"
           variant="outline"
           onClick={handleLoginWithFacebook}
         >

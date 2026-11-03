@@ -2,19 +2,32 @@ import { ROUTES } from "@/app/constants/route";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+const navLinks = [
+  {
+    route: ROUTES.MARKET_PLACE,
+    label: "Market Place",
+  },
+  {
+    route: ROUTES.MY_COLLECTION,
+    label: "My Collection",
+  },
+];
+
 function NavLinks() {
   return (
-    <ul>
-      <Link href={ROUTES.MARKET_PLACE}>
-        <Button variant="ghost" className="text-gray-700 hover:text-gray-900">
-          Market Place
-        </Button>
-      </Link>
-      <Link href={ROUTES.MY_COLLECTION}>
-        <Button variant="ghost" className="text-gray-700 hover:text-gray-900">
-          My Collection
-        </Button>
-      </Link>
+    <ul className="flex items-center gap-2">
+      {navLinks.map((link) => (
+        <li key={link.label}>
+          <Link href={link.route}>
+            <Button
+              variant="ghost"
+              className="text-gray-700 hover:text-gray-900"
+            >
+              {link.label}
+            </Button>
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 }

@@ -6,6 +6,7 @@ import { sendEmail } from "../email";
 import { nextCookies } from "better-auth/next-js";
 import { headers } from "next/headers";
 import { cache } from "react";
+import { redirect } from "next/navigation";
 
 const client = new MongoClient(getMongoUri());
 const db = client.db();
@@ -70,3 +71,13 @@ export const getSession = cache(async () => {
     headers: await headers(),
   });
 });
+
+export const signOut = async () => {
+  const result = await auth.api.signOut({
+    headers: await headers(),
+  });
+
+  if (result.success) {
+    redirect("/sign-in");
+  }
+};
