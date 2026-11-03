@@ -1,14 +1,14 @@
 "use client";
 
-import { Form } from "@/components/storefront/Form";
-import { Button } from "@/components/ui/button";
-import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
-import { SignInValues } from "@/types/auth.types";
-
 import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
+
+import { Form } from "@/components/storefront/Form";
+import { Button } from "@/components/ui/button";
+import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
+import { SignInValues } from "@/types";
 
 function SIGN_IN() {
   const [isSubmitting, setSubmitting] = useState(false);

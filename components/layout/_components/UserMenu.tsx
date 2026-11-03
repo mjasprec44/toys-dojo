@@ -10,7 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { UserDataType } from "@/types/userData.types";
+import { UserDataType } from "@/types";
 
 type UserProfileProps = {
   userData: UserDataType;
