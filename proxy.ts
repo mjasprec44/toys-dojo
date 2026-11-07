@@ -2,22 +2,11 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getSession } from "./lib/auth/auth";
 import { ROUTES } from "./app/constants/route";
-
-// 1. Define route groups clearly
-const AUTH_ROUTES = [ROUTES.SIGN_IN, ROUTES.SIGN_UP];
-const PROTECTED_ROUTES = [
-  ROUTES.DASHBOARD,
-  ROUTES.ADMIN,
-  ROUTES.ACCOUNT,
-  ROUTES.CHECKOUT,
-  ROUTES.MY_COLLECTION,
-];
-
-// 2. Helper to check if a path matches any route in a list (supports sub-paths)
-const matchesRoute = (pathname: string, routes: readonly string[]): boolean =>
-  routes.some(
-    (route) => pathname === route || pathname.startsWith(`${route}/`),
-  );
+import {
+  AUTH_ROUTES,
+  matchesRoute,
+  PROTECTED_ROUTES,
+} from "./config/route-access";
 
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

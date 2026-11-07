@@ -11,6 +11,10 @@ const navLinks = [
     route: ROUTES.MY_COLLECTION,
     label: "My Collection",
   },
+  {
+    route: ROUTES.DASHBOARD,
+    label: "Dashboard",
+  },
 ];
 
 function NavLinks() {
