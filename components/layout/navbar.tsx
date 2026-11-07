@@ -1,7 +1,7 @@
 import { getSession } from "@/lib/auth/auth";
-import AuthButtons from "./_components/AuthButtons";
-import NavLinks from "./_components/NavLinks";
-import UserMenu from "./_components/UserMenu";
+import AuthButtons from "./_components/auth-buttons";
+import NavLinks from "./_components/nav-links";
+import UserMenu from "./_components/user-menu";
 
 async function Navbar() {
   const session = await getSession();

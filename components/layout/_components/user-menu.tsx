@@ -13,13 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserDataType } from "@/types";
-import SignOutButton from "./SignOutButton";
+import SignOutButton from "./sign-out-button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "./mode-toggle";
 
 type UserProfileProps = {
   userData: UserDataType;
