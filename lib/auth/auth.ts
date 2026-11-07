@@ -7,6 +7,8 @@ import { nextCookies } from "better-auth/next-js";
 import { headers } from "next/headers";
 import { cache } from "react";
 import { redirect } from "next/navigation";
+import { initializeUserBoard } from "../init-user-board";
+import { ROUTES } from "@/app/constants/route";
 
 const client = new MongoClient(getMongoUri());
 const db = client.db();
@@ -58,6 +60,17 @@ export const auth = betterAuth({
     },
   },
   plugins: [nextCookies()],
+  databaseHooks: {
+    user: {
+      create: {
+        after: async (user) => {
+          if (user) {
+            await initializeUserBoard(user.id);
+          }
+        },
+      },
+    },
+  },
 });
 
 /**
@@ -78,6 +91,6 @@ export const signOut = async () => {
   });
 
   if (result.success) {
-    redirect("/sign-in");
+    redirect(ROUTES.SIGN_IN);
   }
 };

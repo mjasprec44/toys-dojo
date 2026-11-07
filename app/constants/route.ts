@@ -1,7 +1,8 @@
 // src/config/routes.ts
 export const ROUTES = {
   HOME: "/",
-  PRODUCTS: "/products",
+  MARKET_PLACE: "/marketplace",
+  DASHBOARD: "/dashboard",
   CART: "/cart",
   CHECKOUT: "/checkout",
   SIGN_UP: "/sign-up",
@@ -9,10 +10,9 @@ export const ROUTES = {
   ACCOUNT: "/account",
   ADMIN: "/admin",
 
-  MARKET_PLACE: "/market-place",
   MY_COLLECTION: "/my-collection",
 } as const;
 
 // Helper for dynamic routes
-export const productDetail = (slug: string) => `/products/${slug}`;
+export const itemDetail = (slug: string) => `/marketplace/${slug}`;
 export const orderDetail = (id: string) => `/account/orders/${id}`;

@@ -1,4 +1,5 @@
 "use client";
+import { ROUTES } from "@/app/constants/route";
 import {
   DropdownMenuItem,
   DropdownMenuShortcut,
@@ -15,7 +16,7 @@ function SignOutButton() {
     await signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/sign-in");
+          router.push(ROUTES.SIGN_IN);
           router.refresh();
         },
       },

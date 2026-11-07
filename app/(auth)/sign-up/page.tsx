@@ -10,6 +10,7 @@ import { SiFacebook } from "react-icons/si";
 import { Form } from "@/components/storefront/Form";
 import { Button } from "@/components/ui/button";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
+import { ROUTES } from "@/app/constants/route";
 
 function SignUp() {
   const router = useRouter();
@@ -52,7 +53,7 @@ function SignUp() {
       </section>
       <p className="text-sm text-muted-foreground">
         Already have an account?{" "}
-        <Link href="/sign-in" className="text-primary hover:underline">
+        <Link href={ROUTES.SIGN_IN} className="text-primary hover:underline">
           Sign in
         </Link>
       </p>

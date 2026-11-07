@@ -9,9 +9,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserDataType } from "@/types";
@@ -43,7 +41,9 @@ function UserMenu({ userData }: UserProfileProps) {
                 className="grayscale"
               />
 
-              <AvatarFallback>{userData.name.slice(0, 1)}</AvatarFallback>
+              <AvatarFallback>
+                {userData.name.slice(0, 1).toUpperCase()}
+              </AvatarFallback>
               <AvatarBadge className="bg-green-600 dark:bg-green-800" />
             </Avatar>
           </Button>
