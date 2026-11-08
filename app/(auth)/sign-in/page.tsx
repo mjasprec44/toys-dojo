@@ -5,12 +5,15 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 
-import { Form } from "@/components/storefront/Form";
 import { Button } from "@/components/ui/button";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 import { SignInValues } from "@/types";
+import { Form } from "@/components/storefront/form";
+import { ROUTES } from "@/app/constants/route";
+import { useRouter } from "next/navigation";
 
-function SIGN_IN() {
+function SignIn() {
+  const router = useRouter();
   const [isSubmitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -59,11 +62,19 @@ function SIGN_IN() {
   const handleSubmit = async (values: SignInValues) => {
     setSubmitting(true);
     setServerError(null);
+
     try {
-      // const res = await signIn({
-      //   email: values.email,
-      //   password: values.password,
-      // });
+      const res = await signIn.email({
+        email: values.email,
+        password: values.password,
+      });
+
+      if (res.error) {
+        console.log();
+        setServerError(res.error.message || "Failed to sign in");
+      } else {
+        router.push(ROUTES.DASHBOARD);
+      }
     } catch (error) {
       console.error(error);
       setServerError("Something went wrong.");
@@ -101,27 +112,11 @@ function SIGN_IN() {
           const errors: Record<string, string> = {};
           return errors;
         }}
-        onSubmit={async (values) => {
-          setSubmitting(true);
-          setServerError(null);
-          try {
-            const res = await fetch("/api/sign-in", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(values),
-            });
-            if (!res.ok) {
-              const data = await res.json();
-              setServerError(data.message ?? "Something went wrong.");
-            }
-          } finally {
-            setSubmitting(false);
-          }
-        }}
+        onSubmit={handleSubmit}
         info={Info}
       />
     </section>
   );
 }
 
-export default SIGN_IN;
+export default SignIn;

@@ -7,7 +7,7 @@ import { FormHandle } from "@/types";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 
-import { Form } from "@/components/storefront/Form";
+import { Form } from "@/components/storefront/form";
 import { Button } from "@/components/ui/button";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
 import { ROUTES } from "@/app/constants/route";
@@ -68,13 +68,18 @@ function SignUp() {
         name: values.name,
         email: values.email,
         password: values.password,
+        callbackURL: ROUTES.MARKET_PLACE,
       });
 
       if (res.error) {
         setServerError(res.error.message ?? "Failed to sign up");
       } else {
         formRef.current?.reset();
-        router.push("/");
+        // 1. Invalidate the router cache so server components re-run
+        router.refresh();
+
+        // 2. Then navigate to the verify email page
+        router.push(ROUTES.VERIFY_EMAIL);
       }
     } catch (error) {
       console.error(error);

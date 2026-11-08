@@ -1,3 +1,4 @@
+import { type ReactElement } from "react";
 import { z } from "zod";
 /* ----------------------------- Field config types ---------------------------- */
 export interface FormHandle {
@@ -91,3 +92,23 @@ export interface FormProps<F extends readonly FieldConfig[]> {
   /** Optional ref to call `reset()` imperatively. */
   ref?: React.Ref<FormHandle>;
 }
+
+export type FormDialogProps<F extends readonly FieldConfig[]> = FormProps<F> & {
+  /** Element used to open the dialog. Omit if you control `open` yourself. */
+  trigger?: ReactElement;
+  /** Label for the cancel button. Default: "Cancel". */
+  cancelLabel?: string;
+  /**
+   * Close the dialog after `onSubmit` resolves successfully.
+   * `onSubmit` must **throw** on failure for this to behave correctly;
+   * otherwise set this to `false` and control `open` from the parent.
+   * @default true
+   */
+  closeOnSuccess?: boolean;
+  /** Initial open state when uncontrolled. */
+  defaultOpen?: boolean;
+  /** Controlled open state. */
+  open?: boolean;
+  /** Called whenever the dialog wants to open/close. */
+  onOpenChange?: (open: boolean) => void;
+};

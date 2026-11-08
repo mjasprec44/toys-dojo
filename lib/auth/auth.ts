@@ -18,6 +18,7 @@ export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL,
   emailAndPassword: {
     enabled: true,
+    revokeSessionsOnPasswordReset: true,
     requireEmailVerification: true,
     onExistingUserSignUp: async ({ user }: { user: User }) => {
       void sendEmail({
@@ -28,10 +29,12 @@ export const auth = betterAuth({
     },
   },
   emailVerification: {
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url, token }, request) => {
       void sendEmail({
         to: user.email,
-        subject: "Verify your email address",
+        subject: "Toys Dojo - Verify your email address",
         text: `Click the link to verify your email: ${url}`,
       });
     },

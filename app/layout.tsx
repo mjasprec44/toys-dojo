@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/header";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <TooltipProvider>
             <Header />
             {children}
+            <Toaster
+              toastOptions={{
+                classNames: {
+                  toast: "!rounded-xl !border-2",
+                  success:
+                    "!text-green-600 ![&_[data-description]]:text-green-500",
+                  error: "!text-red-600 ![&_[data-description]]:text-red-500",
+                },
+              }}
+            />
           </TooltipProvider>
         </ThemeProvider>
       </body>

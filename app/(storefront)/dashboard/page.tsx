@@ -1,3 +1,4 @@
+import KanbanBoard from "@/components/storefront/kanban-board";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getSession } from "@/lib/auth/auth";
 import dbConnect from "@/lib/dbConnect";
@@ -11,7 +12,7 @@ async function getBoard(userId: string) {
   const data = await Board.findOne({
     userId,
     name: "Listing Board",
-  });
+  }).populate({ path: "columns" });
 
   const board = JSON.parse(JSON.stringify(data));
 
@@ -22,13 +23,13 @@ async function DashboardContent() {
   const session = await getSession();
   const board = await getBoard(session?.user.id || "");
 
-  console.log(board);
   return (
     <section className="min-h-screen bg-white">
-      <section className="container mx-auto p-6 border border-red-500">
+      <section className="container mx-auto p-6">
         <article className="mb-6">
           <h1 className="text-3xl font-bold text-black">{board.name}</h1>
           <p className="text-muted-foreground">Track your job applications</p>
+          <KanbanBoard board={board} userId={session?.user.id} />
         </article>
       </section>
     </section>
