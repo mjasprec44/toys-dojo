@@ -10,5 +10,12 @@ export const signInWithSocial = async (provider: "facebook" | "google") => {
   return data;
 };
 
-export const { signIn, signUp, signOut, useSession, changePassword } =
-  authClient;
+export const {
+  signIn,
+  signUp,
+  signOut,
+  useSession,
+  changePassword,
+  requestPasswordReset,
+  resetPassword,
+} = authClient;

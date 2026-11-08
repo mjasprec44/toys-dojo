@@ -17,6 +17,8 @@ export const PROTECTED_ROUTES = [
   ROUTES.ACCOUNT,
   ROUTES.CHECKOUT, // Checkout should require login
   ROUTES.MY_COLLECTION,
+  ROUTES.CHANGE_PASSWORD,
+  ROUTES.RESET_PASSWORD,
 ] as const;
 
 // Helper to check if a path matches any route in a list (supports sub-paths)
