@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 import { SignInValues } from "@/types";
 import { Form } from "@/components/storefront/form";
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 import { useRouter } from "next/navigation";
 
 function SignIn() {

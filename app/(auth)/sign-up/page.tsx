@@ -10,7 +10,7 @@ import { SiFacebook } from "react-icons/si";
 import { Form } from "@/components/storefront/form";
 import { Button } from "@/components/ui/button";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 
 function SignUp() {
   const router = useRouter();

@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 import { cache } from "react";
 import { redirect } from "next/navigation";
 import { initializeUserBoard } from "../init-user-board";
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 
 const client = new MongoClient(getMongoUri());
 const db = client.db();

@@ -1,5 +1,5 @@
 "use client";
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 import {
   DropdownMenuItem,
   DropdownMenuShortcut,

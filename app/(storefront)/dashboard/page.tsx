@@ -28,7 +28,7 @@ async function DashboardContent() {
       <section className="container mx-auto p-6">
         <article className="mb-6">
           <h1 className="text-3xl font-bold text-black">{board.name}</h1>
-          <p className="text-muted-foreground">Track your job applications</p>
+          <p className="text-muted-foreground">Track your listings</p>
           <KanbanBoard board={board} userId={session?.user.id} />
         </article>
       </section>

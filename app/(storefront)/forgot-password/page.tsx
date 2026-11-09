@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 import { Form } from "@/components/storefront/form";
 import { Button } from "@/components/ui/button";
 import {

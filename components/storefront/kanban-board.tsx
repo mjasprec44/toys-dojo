@@ -101,7 +101,7 @@ const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
   );
 };
 
-function KanbanBoard({ board, userId }: KanbanBoardProps) {
+export default function KanbanBoard({ board, userId }: KanbanBoardProps) {
   const columns = board.columns;
   return (
     <div className="py-4">
@@ -121,5 +121,3 @@ function KanbanBoard({ board, userId }: KanbanBoardProps) {
     </div>
   );
 }
-
-export default KanbanBoard;

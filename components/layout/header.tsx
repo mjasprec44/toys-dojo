@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 import { Bot } from "lucide-react";
 import Navbar from "./navbar";
 import Link from "next/link";

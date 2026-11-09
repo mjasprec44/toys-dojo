@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getSession } from "./lib/auth/auth";
-import { ROUTES } from "./app/constants/route";
+import { ROUTES } from "./constants/route";
 import {
   AUTH_ROUTES,
   matchesRoute,

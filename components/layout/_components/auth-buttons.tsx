@@ -1,4 +1,4 @@
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 

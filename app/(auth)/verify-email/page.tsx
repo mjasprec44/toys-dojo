@@ -1,4 +1,4 @@
-import { ROUTES } from "@/app/constants/route";
+import { ROUTES } from "@/constants/route";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { getSession } from "@/lib/auth/auth";
 import { MailCheck } from "lucide-react";
