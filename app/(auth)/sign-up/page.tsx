@@ -79,6 +79,7 @@ function SignUp() {
         router.refresh();
 
         // 2. Then navigate to the verify email page
+        router.refresh();
         router.push(ROUTES.VERIFY_EMAIL);
       }
     } catch (error) {

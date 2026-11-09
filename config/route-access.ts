@@ -6,6 +6,8 @@ export const PUBLIC_ROUTES = [
   ROUTES.MARKET_PLACE,
   ROUTES.SIGN_IN,
   ROUTES.SIGN_UP,
+  ROUTES.RESET_PASSWORD,
+  ROUTES.FORGOT_PASSWORD,
   ROUTES.CART, // Cart is often accessible to guests
 ] as const;
 
@@ -18,7 +20,6 @@ export const PROTECTED_ROUTES = [
   ROUTES.CHECKOUT, // Checkout should require login
   ROUTES.MY_COLLECTION,
   ROUTES.CHANGE_PASSWORD,
-  ROUTES.RESET_PASSWORD,
 ] as const;
 
 // Helper to check if a path matches any route in a list (supports sub-paths)

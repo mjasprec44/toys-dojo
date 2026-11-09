@@ -73,7 +73,7 @@ export const auth = betterAuth({
       maxAge: 5 * 60, // 5 minutes (adjust based on your security needs)
     },
   },
-  plugins: [nextCookies()],
+
   databaseHooks: {
     user: {
       create: {
@@ -85,6 +85,7 @@ export const auth = betterAuth({
       },
     },
   },
+  plugins: [nextCookies()],
 });
 
 /**

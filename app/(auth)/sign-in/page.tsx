@@ -27,6 +27,12 @@ function SignIn() {
 
   const Info = (
     <>
+      <Link
+        href="/forgot-password"
+        className="text-primary hover:underline  w-full p-1 rounded-lg text-center"
+      >
+        Forgot Password
+      </Link>
       <section className="w-full space-y-1">
         <Button
           className="w-full hover:cursor-pointer hover:shadow-sm"
@@ -73,6 +79,7 @@ function SignIn() {
         console.log();
         setServerError(res.error.message || "Failed to sign in");
       } else {
+        router.refresh();
         router.push(ROUTES.DASHBOARD);
       }
     } catch (error) {

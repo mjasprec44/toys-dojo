@@ -16,38 +16,30 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export default function ForgotPasswordContent({
-  userEmail,
-}: {
-  userEmail: string | undefined;
-}) {
+export default function ForgotPasswordContent() {
   const [isSubmitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
-  if (!userEmail) {
-    toast.error("No registered email");
-  }
-
-  const handleSubmit = async () => {
+  const handleSubmit = async ({ email }: { email: string }) => {
     setSubmitting(true);
     setServerError(null);
 
     try {
       const res = await requestPasswordReset({
-        email: userEmail!, // required, The new password to set
+        email: email, // required, The new password to set
         redirectTo: ROUTES.RESET_PASSWORD, // When set to true, all other active sessions for this user will be invalidated
       });
 
       if (res.error) {
-        setServerError(res.error?.message || "Could not send reset email");
+        toast.error(res.error?.message || "Could not send reset email");
       } else {
         toast.success("Reset link has been sent to your email");
         setSent(true);
       }
     } catch (error) {
       console.error(error);
-      setServerError("Something went wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setSubmitting(false);
     }
@@ -60,7 +52,8 @@ export default function ForgotPasswordContent({
           <ItemContent>
             <ItemTitle>Reset password request</ItemTitle>
             <ItemDescription>
-              If an account exists for {userEmail}, a reset link has been sent.
+              If that email address is in our system, we’ve sent you a password
+              reset link.
             </ItemDescription>
           </ItemContent>
           <ItemMedia variant="icon">
@@ -75,10 +68,10 @@ export default function ForgotPasswordContent({
         </Item>
       ) : (
         <Form
-          title="Reset password"
-          description=""
+          title="Forgot your password?"
+          description="No worries! Enter your email below, and we'll send you instructions to create a new one."
           submitLabel="Send"
-          isSubmitting={isSubmitting || !userEmail}
+          isSubmitting={isSubmitting}
           serverError={serverError}
           fields={[
             {
@@ -88,8 +81,6 @@ export default function ForgotPasswordContent({
               required: true,
               minLength: 8,
               maxLength: 32,
-              defaultValue: userEmail,
-              disabled: true,
             },
           ]}
           validate={() => {

@@ -1,7 +1,15 @@
+import { ROUTES } from "@/app/constants/route";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { getSession } from "@/lib/auth/auth";
 import { MailCheck } from "lucide-react";
+import { redirect } from "next/navigation";
 
-function VerifyEmailPage() {
+async function VerifyEmailPage() {
+  const session = await getSession();
+
+  if (session) {
+    redirect(ROUTES.MARKET_PLACE);
+  }
   return (
     <section className="min-h-screen w-full flex items-start justify-center">
       <Card className="w-full max-w-sm my-30 p-4 shadow-md">
