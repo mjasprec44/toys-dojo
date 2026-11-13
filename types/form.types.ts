@@ -29,12 +29,18 @@ export interface InputField extends BaseField {
   maxLength?: number;
   /** Minimum number of characters. */
   minLength?: number;
+  // 🆕 numeric-input constraints (only used when type === "number")
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 export interface TextareaField extends BaseField {
   type: "textarea";
   defaultValue?: string;
   rows?: number;
+  maxLength?: number; // 🆕
+  minLength?: number; // 🆕
 }
 
 export interface SelectField extends BaseField {
@@ -48,17 +54,51 @@ export interface CheckboxField extends BaseField {
   defaultValue?: boolean;
 }
 
+// 🆕 Multi-select (e.g. product tags)
+export interface MultiSelectField extends BaseField {
+  type: "multi-select";
+  defaultValue?: string[];
+  options: SelectOption[];
+}
+
+// 🆕 Free-form list of strings (e.g. product issues)
+export interface StringListField extends BaseField {
+  type: "string-list";
+  defaultValue?: string[];
+  itemLabel?: string;
+  maxItems?: number;
+}
+
+// 🆕 Image upload (e.g. product images)
+export interface ImageUploadField extends BaseField {
+  type: "image-upload";
+  defaultValue?: File[];
+  accept?: string;
+  maxFiles?: number;
+}
+
 export type FieldConfig =
   | InputField
   | TextareaField
   | SelectField
-  | CheckboxField;
+  | CheckboxField
+  | MultiSelectField // 🆕
+  | StringListField // 🆕
+  | ImageUploadField; // 🆕
+
+// 🆕 add these two
+export type FormValue = string | boolean | string[] | File[];
+export type FormValuesRecord = Record<string, FormValue>;
 
 /* ------------------------- Value inference helpers -------------------------- */
 
 type FieldValue<F extends FieldConfig> = F extends { type: "checkbox" }
   ? boolean
-  : string;
+  : F extends { type: "multi-select" } | { type: "string-list" }
+    ? string[]
+    : F extends { type: "image-upload" }
+      ? File[]
+      : string;
 
 /** Maps the `fields` tuple into an object type of form values. */
 export type FormValues<F extends readonly FieldConfig[]> = {

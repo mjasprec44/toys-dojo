@@ -2,18 +2,28 @@ import { PasswordInput } from "@/components/storefront/password-input";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import type { FieldConfig } from "@/types";
+import type { FieldConfig, FormValuesRecord } from "@/types";
 
 export function getInitialValues(
   fields: readonly FieldConfig[],
-): Record<string, string | boolean> {
-  const values: Record<string, string | boolean> = {};
+): FormValuesRecord {
+  const values: FormValuesRecord = {};
+
   for (const field of fields) {
-    values[field.name] =
-      field.type === "checkbox"
-        ? (field.defaultValue ?? false)
-        : (field.defaultValue ?? "");
+    switch (field.type) {
+      case "checkbox":
+        values[field.name] = field.defaultValue ?? false;
+        break;
+      case "multi-select":
+      case "string-list":
+      case "image-upload":
+        values[field.name] = field.defaultValue ?? [];
+        break;
+      default:
+        values[field.name] = field.defaultValue ?? "";
+    }
   }
+
   return values;
 }
 
@@ -118,3 +128,52 @@ export function renderField(
       );
   }
 }
+
+// TODO
+// case "multi-select":
+//   return (
+//     <div className="flex flex-wrap gap-2">
+//       {field.options.map((opt) => {
+//         const selected = Array.isArray(value) && value.includes(opt.value);
+//         return (
+//           <button
+//             key={opt.value}
+//             type="button"
+//             onClick={() => {
+//               const current = Array.isArray(value) ? value : [];
+//               const next = selected
+//                 ? current.filter((v) => v !== opt.value)
+//                 : [...current, opt.value];
+//               onChange(next);
+//             }}
+//             className={`rounded-full border px-3 py-1 text-sm ${
+//               selected ? "bg-primary text-primary-foreground" : ""
+//             }`}
+//           >
+//             {opt.label}
+//           </button>
+//         );
+//       })}
+//     </div>
+//   );
+
+// case "string-list":
+//   return (
+//     <StringListInput
+//       value={Array.isArray(value) ? value : []}
+//       onChange={onChange}
+//       itemLabel={field.itemLabel}
+//       maxItems={field.maxItems}
+//       placeholder={field.placeholder}
+//     />
+//   );
+
+// case "image-upload":
+//   return (
+//     <ImageUploader
+//       value={Array.isArray(value) ? (value as File[]) : []}
+//       onChange={onChange}
+//       accept={field.accept}
+//       maxFiles={field.maxFiles}
+//     />
+//   );

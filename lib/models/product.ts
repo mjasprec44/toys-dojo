@@ -134,12 +134,10 @@ const ProductSchema = new Schema<IProduct>(
       type: Number,
       default: 1,
       min: 0, // 0 = out of stock, keep listing visible
-      required: true,
     },
     slug: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
       index: true,
