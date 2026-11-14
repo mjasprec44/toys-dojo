@@ -27,19 +27,19 @@ export async function createProduct(data: CreateProductPropTypes) {
     tags,
     openForTrade,
     status,
-    images,
+    // images,
     quantity,
   } = data;
 
   if (
-    name ||
-    description ||
-    price ||
-    boardId ||
-    columnId ||
-    condition ||
-    status ||
-    images
+    !name ||
+    !description ||
+    !price ||
+    !boardId ||
+    !columnId ||
+    !condition ||
+    !status
+    // || !images
   ) {
     return { error: "Missing required fields" };
   }
@@ -68,6 +68,8 @@ export async function createProduct(data: CreateProductPropTypes) {
     .select("order -_id")
     .lean()) as { order: number } | null;
 
+  const itemSlug = await uniqueSlug(name, Product);
+
   const newProduct = await Product.create({
     name,
     description,
@@ -75,22 +77,21 @@ export async function createProduct(data: CreateProductPropTypes) {
     brand,
     boardId,
     columnId,
+    userId: session.user.id,
     condition,
     issues,
     tags: tags || [],
     openForTrade,
     order: (maxOrder?.order ?? -1) + 1,
     status,
-    images,
+    // images,
     quantity,
-    slug: uniqueSlug(name, Product),
+    slug: itemSlug,
   });
 
   await Column.findByIdAndUpdate(columnId, {
     $push: { products: newProduct._id },
   });
 
-  return {
-    data: newProduct,
-  };
+  return { data: { id: newProduct._id.toString() } };
 }

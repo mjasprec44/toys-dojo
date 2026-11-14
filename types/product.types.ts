@@ -14,12 +14,12 @@ export const TAGS = [
 ] as const;
 
 export const CONDITIONS = [
-  "new",
+  "mint-in-sealed-box",
+  "mint-in-box",
+  "back-in-box",
   "used",
   "loose",
-  "mint-sealed",
-  "mint-box",
-  "back-in-box",
+  "with-issue",
 ] as const;
 
 export const STATUS = [
@@ -48,7 +48,7 @@ export interface IProduct {
   columnId: string;
   userId: string;
   status: Status;
-  images: string[];
+  // images: string[];
   quantity: number;
   slug: string;
   createdAt: Date;

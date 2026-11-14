@@ -33,9 +33,9 @@ function CreateProductDialog({ columnId, boardId }: CreateProductDialogProps) {
       });
 
       if (res.error) {
-        toast.error(res.error || "Could not send reset email");
+        toast.error(res.error || "Could not create product");
       } else {
-        toast.success("Reset link has been sent to your email");
+        toast.success("Product added");
         router.refresh();
       }
     } catch (error) {

@@ -76,7 +76,6 @@ function SignIn() {
       });
 
       if (res.error) {
-        console.log();
         setServerError(res.error.message || "Failed to sign in");
       } else {
         router.refresh();

@@ -15,12 +15,12 @@ export const TAGS = [
 ] as const;
 
 export const CONDITIONS = [
-  "new",
+  "mint-in-sealed-box",
+  "mint-in-box",
+  "back-in-box",
   "used",
   "loose",
-  "mint-sealed",
-  "mint-box",
-  "back-in-box",
+  "with-issue",
 ] as const;
 
 export const STATUS = [
@@ -66,7 +66,6 @@ const ProductSchema = new Schema<IProduct>(
     },
     description: {
       type: String,
-      required: true,
       trim: true,
       maxlength: 5000,
     },
@@ -122,14 +121,14 @@ const ProductSchema = new Schema<IProduct>(
       default: "available",
       required: true,
     },
-    images: {
-      type: [String],
-      required: true,
-      validate: {
-        validator: (v: string[]) => v.length > 0,
-        message: "At least one image is required",
-      },
-    },
+    // images: {
+    //   type: [String],
+    //   required: true,
+    //   validate: {
+    //     validator: (v: string[]) => v.length > 0,
+    //     message: "At least one image is required",
+    //   },
+    // },
     quantity: {
       type: Number,
       default: 1,

@@ -1,4 +1,3 @@
-// lib/utils/slug.ts
 import slugify from "slugify";
 import type { Model } from "mongoose";
 

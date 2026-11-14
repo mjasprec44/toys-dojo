@@ -1,4 +1,5 @@
-import { FieldConfig, CONDITIONS, TAGS, STATUS } from "@/types";
+import { FieldConfig } from "@/types";
+import { CONDITIONS, STATUS, TAGS } from "@/types/product.types";
 
 /* ------------------------------ Helpers ----------------------------------- */
 
@@ -23,7 +24,7 @@ export const PRODUCT_FORM_FIELDS = [
     name: "description",
     label: "Description",
     type: "textarea",
-    required: true,
+    required: false,
     rows: 5,
     maxLength: 5000,
     placeholder: "Describe the figure, scale, series, any details…",
@@ -57,9 +58,9 @@ export const PRODUCT_FORM_FIELDS = [
   {
     name: "tags",
     label: "Franchise tags",
-    type: "multi-select",
-    required: true,
-    description: "Pick at least one franchise.",
+    type: "select",
+    required: false,
+    description: "Pick franchise.",
     options: optionsFrom(TAGS),
   },
   {
@@ -95,13 +96,13 @@ export const PRODUCT_FORM_FIELDS = [
     step: 1,
     defaultValue: "1", // InputField.defaultValue is string
   },
-  {
-    name: "images",
-    label: "Images",
-    type: "image-upload",
-    required: true,
-    description: "At least one image is required.",
-    accept: "image/*",
-    maxFiles: 10,
-  },
+  // {
+  //   name: "images",
+  //   label: "Images",
+  //   type: "image-upload",
+  //   required: true,
+  //   description: "At least one image is required.",
+  //   accept: "image/*",
+  //   maxFiles: 10,
+  // },
 ] as const satisfies readonly FieldConfig[];
