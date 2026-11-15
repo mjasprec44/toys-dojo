@@ -1,8 +1,9 @@
+import { ImageUploader } from "@/components/storefront/image-upload";
 import { PasswordInput } from "@/components/storefront/password-input";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import type { FieldConfig, FormValuesRecord } from "@/types";
+import type { FieldConfig, FormValue, FormValuesRecord } from "@/types";
 
 export function getInitialValues(
   fields: readonly FieldConfig[],
@@ -30,7 +31,7 @@ export function getInitialValues(
 export function renderField(
   field: FieldConfig,
   value: string | boolean | undefined,
-  onChange: (value: string | boolean) => void,
+  onChange: (value: FormValue) => void,
 ) {
   const numericOnly = "numericOnly" in field && field.numericOnly;
   const maxLength = "maxLength" in field && field.maxLength;
@@ -104,6 +105,18 @@ export function renderField(
         </div>
       );
 
+    case "image-upload":
+      return (
+        <ImageUploader
+          value={Array.isArray(value) ? (value as File[]) : []}
+          onChange={(files) => onChange(files)}
+          accept={field.accept}
+          maxFiles={field.maxFiles}
+          multiple={field.multiple}
+          disabled={field.disabled}
+        />
+      );
+
     default:
       return (
         <Input
@@ -165,15 +178,5 @@ export function renderField(
 //       itemLabel={field.itemLabel}
 //       maxItems={field.maxItems}
 //       placeholder={field.placeholder}
-//     />
-//   );
-
-// case "image-upload":
-//   return (
-//     <ImageUploader
-//       value={Array.isArray(value) ? (value as File[]) : []}
-//       onChange={onChange}
-//       accept={field.accept}
-//       maxFiles={field.maxFiles}
 //     />
 //   );

@@ -5,7 +5,8 @@ export type ProductFormFieldName = (typeof PRODUCT_FORM_FIELDS)[number]["name"];
 
 export type ProductFormValues = FormValues<typeof PRODUCT_FORM_FIELDS>;
 
-export interface CreateProductPropTypes extends ProductFormValues {
+export type CreateProductPropTypes = Omit<ProductFormValues, "images"> & {
   boardId: string;
   columnId: string;
-}
+  imageUrls: string[];
+};

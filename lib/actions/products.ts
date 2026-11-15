@@ -27,7 +27,7 @@ export async function createProduct(data: CreateProductPropTypes) {
     tags,
     openForTrade,
     status,
-    // images,
+    imageUrls,
     quantity,
   } = data;
 
@@ -38,8 +38,8 @@ export async function createProduct(data: CreateProductPropTypes) {
     !boardId ||
     !columnId ||
     !condition ||
-    !status
-    // || !images
+    !status ||
+    !imageUrls
   ) {
     return { error: "Missing required fields" };
   }
@@ -69,6 +69,10 @@ export async function createProduct(data: CreateProductPropTypes) {
     .lean()) as { order: number } | null;
 
   const itemSlug = await uniqueSlug(name, Product);
+  const cleanImages = (imageUrls ?? []).filter(Boolean);
+
+  if (cleanImages.length === 0)
+    return { error: "At least one image is required" };
 
   const newProduct = await Product.create({
     name,
@@ -84,7 +88,7 @@ export async function createProduct(data: CreateProductPropTypes) {
     openForTrade,
     order: (maxOrder?.order ?? -1) + 1,
     status,
-    // images,
+    images: cleanImages,
     quantity,
     slug: itemSlug,
   });

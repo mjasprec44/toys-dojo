@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 
 import { ProductFormValues } from "@/types";
 import { createProduct } from "@/lib/actions/products";
+import { upload } from "@vercel/blob/client";
 
 interface CreateProductDialogProps {
   columnId: string;
@@ -26,8 +27,19 @@ function CreateProductDialog({ columnId, boardId }: CreateProductDialogProps) {
     setServerError(null);
 
     try {
+      const files = values.images as File[];
+      const imageUrls = await Promise.all(
+        files.map((file) =>
+          upload(`products/${crypto.randomUUID()}-${file.name}`, file, {
+            access: "public",
+            handleUploadUrl: "/api/upload",
+          }).then((blob) => blob.url),
+        ),
+      );
+
       const res = await createProduct({
         ...values,
+        imageUrls,
         columnId,
         boardId,
       });

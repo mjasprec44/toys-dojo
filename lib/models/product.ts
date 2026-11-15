@@ -121,14 +121,14 @@ const ProductSchema = new Schema<IProduct>(
       default: "available",
       required: true,
     },
-    // images: {
-    //   type: [String],
-    //   required: true,
-    //   validate: {
-    //     validator: (v: string[]) => v.length > 0,
-    //     message: "At least one image is required",
-    //   },
-    // },
+    images: {
+      type: [String],
+      required: true,
+      validate: {
+        validator: (v: string[]) => v.length > 0,
+        message: "At least one image is required",
+      },
+    },
     quantity: {
       type: Number,
       default: 1,
@@ -139,7 +139,7 @@ const ProductSchema = new Schema<IProduct>(
       required: true,
       lowercase: true,
       trim: true,
-      index: true,
+      unique: true,
     },
   },
   { timestamps: true },

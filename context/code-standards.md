@@ -36,7 +36,14 @@
 
 ## Data and Storage
 
-- Project metadata and relationships belong in PostgreSQL via Prisma.
+- Persist all application data in **MongoDB via Mongoose**. Do not introduce Prisma, the raw `mongodb` driver, or an ORM abstraction on top of Mongoose unless explicitly approved.
+- Keep one model file per collection under `lib/models/*.ts`. Every model file begins with `import "server-only";`.
+- Export models via the dev-safe singleton pattern so HMR does not throw `OverwriteModelError`:
+
+  ```ts
+  if (process.env.NODE_ENV !== "production") delete mongoose.models.<Model>;
+  export const <Model> = mongoose.model("<Model>", <Model>Schema);
+  
 - Canvas snapshots and generated specs belong in Vercel Blob; Prisma stores only the blob URL reference.
 - Do not store large generated content directly in the database.
 - Task run records are first-class relational data — treat ownership and run IDs as verified before any token issuance.

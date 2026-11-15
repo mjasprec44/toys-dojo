@@ -96,13 +96,14 @@ export const PRODUCT_FORM_FIELDS = [
     step: 1,
     defaultValue: "1", // InputField.defaultValue is string
   },
-  // {
-  //   name: "images",
-  //   label: "Images",
-  //   type: "image-upload",
-  //   required: true,
-  //   description: "At least one image is required.",
-  //   accept: "image/*",
-  //   maxFiles: 10,
-  // },
+  {
+    name: "images",
+    label: "Images",
+    type: "image-upload",
+    required: true,
+    description: "At least one image is required.",
+    accept: "image/*",
+    maxFiles: 10,
+    multiple: true,
+  },
 ] as const satisfies readonly FieldConfig[];

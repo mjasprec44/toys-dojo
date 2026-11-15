@@ -75,6 +75,7 @@ export interface ImageUploadField extends BaseField {
   defaultValue?: File[];
   accept?: string;
   maxFiles?: number;
+  multiple?: boolean;
 }
 
 export type FieldConfig =
