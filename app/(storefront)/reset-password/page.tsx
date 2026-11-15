@@ -1,7 +1,7 @@
 "use client";
 
 import { ROUTES } from "@/constants/route";
-import { Form } from "@/components/storefront/form";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,6 +17,7 @@ import { resetPassword } from "@/lib/auth/auth-client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { toast } from "sonner";
+import { Form } from "@/components/storefront/form";
 
 function ResetPasswordPageContent() {
   const router = useRouter();

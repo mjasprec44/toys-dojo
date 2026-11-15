@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FormDialog } from "./form-dialog";
+
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { ProductFormValues } from "@/types";
 import { createProduct } from "@/lib/actions/products";
 import { upload } from "@vercel/blob/client";
+import { FormDialog } from "./form/form-dialog";
 
 interface CreateProductDialogProps {
   columnId: string;
