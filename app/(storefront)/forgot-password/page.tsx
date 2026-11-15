@@ -15,7 +15,7 @@ import { requestPasswordReset } from "@/lib/auth/auth-client";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/storefront/form";
+import { Form } from "@/components/storefront/form/form-card";
 
 export default function ForgotPasswordContent() {
   const [isSubmitting, setSubmitting] = useState(false);

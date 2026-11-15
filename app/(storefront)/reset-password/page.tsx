@@ -17,7 +17,7 @@ import { resetPassword } from "@/lib/auth/auth-client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/storefront/form";
+import { Form } from "@/components/storefront/form/form-card";
 
 function ResetPasswordPageContent() {
   const router = useRouter();

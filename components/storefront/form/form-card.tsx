@@ -1,5 +1,9 @@
 "use client";
 import { type FormEvent, useImperativeHandle } from "react";
+import type { FormProps, FieldConfig, FormValues } from "@/types";
+
+import { renderField } from "@/lib/form-helpers";
+import { useFormState } from "@/hooks/use-form-state";
 import {
   Card,
   CardContent,
@@ -7,13 +11,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import { Label } from "../ui/label";
-import { Button } from "../ui/button";
-import type { FormProps, FieldConfig, FormValues } from "@/types";
-import { Spinner } from "../ui/spinner";
-import { renderField } from "@/lib/form-helpers";
-import { useFormState } from "@/hooks/use-form-state";
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 
 export function Form<const F extends readonly FieldConfig[]>({
   title,
@@ -110,4 +111,3 @@ export function Form<const F extends readonly FieldConfig[]>({
     </Card>
   );
 }
-

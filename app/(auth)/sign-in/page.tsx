@@ -11,7 +11,7 @@ import { SignInValues } from "@/types";
 
 import { ROUTES } from "@/constants/route";
 import { useRouter } from "next/navigation";
-import { Form } from "@/components/storefront/form";
+import { Form } from "@/components/storefront/form/form-card";
 
 function SignIn() {
   const router = useRouter();
