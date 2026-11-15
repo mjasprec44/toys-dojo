@@ -1,7 +1,13 @@
 "use client";
 
 import { useCallback, useState, type FormEvent } from "react";
-import type { FieldConfig, FormProps, FormValues } from "@/types";
+import type {
+  FieldConfig,
+  FormProps,
+  FormValue,
+  FormValues,
+  FormValuesRecord,
+} from "@/types";
 import { getInitialValues } from "@/lib/form-helpers";
 
 type UseFormStateOptions<F extends readonly FieldConfig[]> = Pick<
@@ -15,7 +21,7 @@ export function useFormState<F extends readonly FieldConfig[]>({
   validate: customValidate,
   onSubmit,
 }: UseFormStateOptions<F>) {
-  const [values, setValues] = useState<Record<string, string | boolean>>(() =>
+  const [values, setValues] = useState<FormValuesRecord>(() =>
     getInitialValues(fields),
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -25,7 +31,7 @@ export function useFormState<F extends readonly FieldConfig[]>({
     setErrors({});
   }, [fields]);
 
-  const setValue = useCallback((name: string, value: string | boolean) => {
+  const setValue = useCallback((name: string, value: FormValue) => {
     setValues((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => {
       if (!prev[name]) return prev;

@@ -30,7 +30,7 @@ export function getInitialValues(
 
 export function renderField(
   field: FieldConfig,
-  value: string | boolean | undefined,
+  value: FormValue | undefined,
   onChange: (value: FormValue) => void,
 ) {
   const numericOnly = "numericOnly" in field && field.numericOnly;
