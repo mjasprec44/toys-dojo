@@ -74,14 +74,18 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       {trigger && <DialogTrigger render={trigger} />}
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
+      <DialogContent className="sm:max-w-md flex flex-col max-h-[90dvh] overflow-hidden">
+        <DialogHeader className="shrink-0">
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} noValidate className="space-y-4">
-          <div className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="flex flex-col flex-1 min-h-0 gap-4"
+        >
+          <div className="space-y-4 overflow-y-auto flex-1 min-h-0 px-1">
             {fields.map((field) => {
               const error =
                 form.errors[field.name] ||
@@ -120,7 +124,7 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
             {info}
           </div>
 
-          <DialogFooter>
+          <DialogFooter className="shrink-0">
             <Button
               type="button"
               variant="outline"
