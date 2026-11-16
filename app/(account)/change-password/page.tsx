@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/storefront/form/form-card";
+import { Form } from "@/components/shared/form/form-card";
 import { changePassword } from "@/lib/auth/auth-client";
 
 interface ChangePasswordValues {
@@ -39,7 +39,7 @@ function ChangePasswordPage() {
   };
 
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
+    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Form
         title="Change password"
         description=""

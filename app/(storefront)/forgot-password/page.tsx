@@ -1,11 +1,9 @@
 "use client";
 
-
-
 import { X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/storefront/form/form-card";
+import { Form } from "@/components/shared/form/form-card";
 import { Button } from "@/components/ui/button";
 import {
   Item,
@@ -47,9 +45,9 @@ export default function ForgotPasswordContent() {
   };
 
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
+    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       {sent ? (
-        <Item className="w-full max-w-md border-border shadow-lg animate-fade-in">
+        <Item className="border-border animate-fade-in w-full max-w-md shadow-lg">
           <ItemContent>
             <ItemTitle>Reset password request</ItemTitle>
             <ItemDescription>

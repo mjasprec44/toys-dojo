@@ -5,12 +5,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import { Form } from "@/components/storefront/form/form-card";
+import { Form } from "@/components/shared/form/form-card";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 import { SignInValues } from "@/types";
-
 
 function SignIn() {
   const router = useRouter();

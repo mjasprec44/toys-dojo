@@ -1,4 +1,3 @@
-// src/config/routes.ts
 export const ROUTES = {
   HOME: "/",
   MARKET_PLACE: "/marketplace",

@@ -1,12 +1,9 @@
 "use client";
 
-
-
-
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/storefront/form/form-card";
+import { Form } from "@/components/shared/form/form-card";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -52,7 +49,7 @@ function ResetPasswordPageContent() {
 
   if (!token) {
     return (
-      <Card className="flex flex-col w-full max-w-md border-border shadow-lg animate-fade-in">
+      <Card className="border-border animate-fade-in flex w-full max-w-md flex-col shadow-lg">
         <CardHeader>
           <CardTitle className="text-destructive">Error</CardTitle>
           <CardDescription>
@@ -99,10 +96,10 @@ function ResetPasswordPageContent() {
 
 export default function ResetPasswordPage() {
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
+    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Suspense
         fallback={
-          <Skeleton className="w-full h-52 max-w-md border-border shadow-lg" />
+          <Skeleton className="border-border h-52 w-full max-w-md shadow-lg" />
         }
       >
         <ResetPasswordPageContent />

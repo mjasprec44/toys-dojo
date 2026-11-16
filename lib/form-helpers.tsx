@@ -1,5 +1,5 @@
-import { ImageUploader } from "@/components/storefront/image-upload";
-import { PasswordInput } from "@/components/storefront/password-input";
+import { ImageUploader } from "@/components/shared/image-upload";
+import { PasswordInput } from "@/components/shared/password-input";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -50,7 +50,7 @@ export function renderField(
           placeholder={field.placeholder}
           disabled={field.disabled}
           required={field.required}
-          className="border-gray-300 focus:border-primary focus:ring-primary"
+          className="focus:border-primary focus:ring-primary border-gray-300"
         />
       );
     case "textarea":
@@ -76,11 +76,14 @@ export function renderField(
           onChange={(e) => onChange(e.target.value)}
           disabled={field.disabled}
           required={field.required}
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus:ring-primary focus-visible:ring-2 focus-visible:ring-ring"
+          className="border-input bg-background ring-offset-background focus:ring-primary focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:outline-none"
         >
           <option value="">{field.placeholder ?? "Select..."}</option>
           {field.options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
+            <option
+              key={opt.value}
+              value={opt.value}
+            >
               {opt.label}
             </option>
           ))}
@@ -97,9 +100,12 @@ export function renderField(
             checked={Boolean(value)}
             onChange={(e) => onChange(e.target.checked)}
             disabled={field.disabled}
-            className="h-4 w-4 rounded border-input"
+            className="border-input h-4 w-4 rounded"
           />
-          <Label htmlFor={field.name} className="cursor-pointer">
+          <Label
+            htmlFor={field.name}
+            className="cursor-pointer"
+          >
             {field.label}
           </Label>
         </div>
@@ -136,7 +142,7 @@ export function renderField(
           placeholder={field.placeholder}
           disabled={field.disabled}
           required={field.required}
-          className="border-gray-300 focus:border-primary focus:ring-primary"
+          className="focus:border-primary focus:ring-primary border-gray-300"
         />
       );
   }

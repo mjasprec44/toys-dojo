@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import { Form } from "@/components/storefront/form/form-card";
+import { Form } from "@/components/shared/form/form-card";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
@@ -33,7 +33,7 @@ function SignUp() {
           variant="outline"
           onClick={handleLoginWithGoogle}
         >
-          <div className="flex gap-2 items-center w-45">
+          <div className="flex w-45 items-center gap-2">
             <FcGoogle />
             <span className="text-gray-800">Sign up with Google</span>
           </div>
@@ -44,15 +44,18 @@ function SignUp() {
           variant="outline"
           onClick={handleLoginWithFacebook}
         >
-          <div className="flex gap-2 items-center w-45">
+          <div className="flex w-45 items-center gap-2">
             <SiFacebook className="text-blue-900" />
             <span className="text-gray-800">Sign up with Facebook</span>
           </div>
         </Button>
       </section>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Already have an account?{" "}
-        <Link href={ROUTES.SIGN_IN} className="text-primary hover:underline">
+        <Link
+          href={ROUTES.SIGN_IN}
+          className="text-primary hover:underline"
+        >
           Sign in
         </Link>
       </p>
@@ -90,7 +93,7 @@ function SignUp() {
   };
 
   return (
-    <section className="flex flex-col min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
+    <section className="bg-background flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center p-4">
       <Form
         title="Create your account"
         description="We'll email you a link to verify your address."
