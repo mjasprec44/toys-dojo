@@ -48,7 +48,7 @@ export interface IProduct {
   columnId: string;
   userId: string;
   status: Status;
-  // images: string[];
+  images: string[];
   quantity: number;
   slug: string;
   createdAt: Date;

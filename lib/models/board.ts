@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 
 export interface IBoard extends Document {
   name: string;
-  userId: string;
+  userId: mongoose.Types.ObjectId;
   columns: mongoose.Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
@@ -15,7 +15,8 @@ const BoardSchema = new Schema<IBoard>(
       required: true,
     },
     userId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
       index: true,
     },

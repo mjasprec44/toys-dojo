@@ -87,11 +87,12 @@ const ProductSchema = new Schema<IProduct>(
     issues: [{ type: String, trim: true }], // e.g. ["scuffed paint on left arm", "missing sword"]
     tags: {
       type: [{ type: String, enum: [...TAGS] }],
+      default: [],
       //   required: true,
-      validate: {
-        validator: (v: Tag[]) => v.length > 0,
-        message: "At least one franchise tag is required",
-      },
+      // validate: {
+      //   validator: (v: Tag[]) => v.length > 0,
+      //   message: "At least one franchise tag is required",
+      // },
     },
     // --- marketplace / kanban fields ---
     openForTrade: { type: Boolean, default: false },

@@ -27,12 +27,13 @@ export async function POST(req: Request): Promise<NextResponse> {
           allowedContentTypes: ["image/jpeg", "image/png", "image/webp"],
           maximumSizeInBytes: 10 * 1024 * 1024,
           addRandomSuffix: true,
+          // callbackUrl: `${process.env.BETTER_AUTH_URL}/api/upload/callback`,
         };
       },
-      onUploadCompleted: async ({ blob }) => {
-        // optional: record the upload in your DB
-        console.log("upload completed:", blob.url);
-      },
+      // onUploadCompleted: async ({ blob }) => {
+      //   // optional: record the upload in your DB
+      //   console.log("upload completed:", blob.url);
+      // },
     });
     return NextResponse.json(jsonResponse);
   } catch (error) {

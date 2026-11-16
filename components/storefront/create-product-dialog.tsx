@@ -28,7 +28,11 @@ function CreateProductDialog({ columnId, boardId }: CreateProductDialogProps) {
     setServerError(null);
 
     try {
-      const files = values.images as File[];
+      // Extract images so File objects aren't sent to the Server Action
+      const { images, ...productData } = values;
+
+      const files = images as File[];
+
       const imageUrls = await Promise.all(
         files.map((file) =>
           upload(`products/${crypto.randomUUID()}-${file.name}`, file, {
@@ -39,14 +43,16 @@ function CreateProductDialog({ columnId, boardId }: CreateProductDialogProps) {
       );
 
       const res = await createProduct({
-        ...values,
+        ...productData,
         imageUrls,
         columnId,
         boardId,
       });
 
       if (res.error) {
+        setServerError(res.error);
         toast.error(res.error || "Could not create product");
+        return;
       } else {
         toast.success("Product added");
         router.refresh();
