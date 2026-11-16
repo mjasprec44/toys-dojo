@@ -1,16 +1,15 @@
 "use client";
-import { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { SignUpValues } from "@/types";
-import { FormHandle } from "@/types";
+import { useState, useRef } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-
-import { Button } from "@/components/ui/button";
-import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
-import { ROUTES } from "@/constants/route";
 import { Form } from "@/components/storefront/form/form-card";
+import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/route";
+import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
+import { SignUpValues } from "@/types";
+import { FormHandle } from "@/types";
 
 function SignUp() {
   const router = useRouter();

@@ -1,9 +1,9 @@
+import { Suspense } from "react";
 import KanbanBoard from "@/components/storefront/kanban-board";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getSession } from "@/lib/auth/auth";
 import dbConnect from "@/lib/dbConnect";
 import { Board } from "@/lib/models";
-import { Suspense } from "react";
 
 async function getBoard(userId: string) {
   "use cache";

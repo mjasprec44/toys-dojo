@@ -1,7 +1,12 @@
 "use client";
 
-import { ROUTES } from "@/constants/route";
 
+
+
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useState } from "react";
+import { toast } from "sonner";
+import { Form } from "@/components/storefront/form/form-card";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,14 +15,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Skeleton } from "@/components/ui/skeleton";
+import { ROUTES } from "@/constants/route";
 import { resetPassword } from "@/lib/auth/auth-client";
-
-import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
-import { toast } from "sonner";
-import { Form } from "@/components/storefront/form/form-card";
 
 function ResetPasswordPageContent() {
   const router = useRouter();

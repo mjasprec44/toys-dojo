@@ -1,10 +1,9 @@
-import { Suspense } from "react";
-
-import { ROUTES } from "@/constants/route";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { getSession } from "@/lib/auth/auth";
 import { MailCheck } from "lucide-react";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { ROUTES } from "@/constants/route";
+import { getSession } from "@/lib/auth/auth";
 
 async function VerifyEmailContent() {
   const session = await getSession();

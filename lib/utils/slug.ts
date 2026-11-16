@@ -1,5 +1,5 @@
-import slugify from "slugify";
 import type { Model } from "mongoose";
+import slugify from "slugify";
 
 export function baseSlug(name: string) {
   return slugify(name, { lower: true, strict: true, trim: true }).slice(0, 80);

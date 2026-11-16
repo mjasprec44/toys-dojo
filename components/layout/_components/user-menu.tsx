@@ -1,3 +1,5 @@
+import { ModeToggle } from "./mode-toggle";
+import SignOutButton from "./sign-out-button";
 import {
   Avatar,
   AvatarBadge,
@@ -12,14 +14,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { UserDataType } from "@/types";
-import SignOutButton from "./sign-out-button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ModeToggle } from "./mode-toggle";
+import { UserDataType } from "@/types";
 
 type UserProfileProps = {
   userData: UserDataType;

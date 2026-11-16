@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getSession } from "./lib/auth/auth";
-import { ROUTES } from "./constants/route";
 import {
   AUTH_ROUTES,
   matchesRoute,
   PROTECTED_ROUTES,
 } from "./config/route-access";
+import { ROUTES } from "./constants/route";
+import { getSession } from "./lib/auth/auth";
 
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

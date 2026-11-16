@@ -1,9 +1,9 @@
 "use client";
 
-import { Form } from "@/components/storefront/form/form-card";
-import { changePassword } from "@/lib/auth/auth-client";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Form } from "@/components/storefront/form/form-card";
+import { changePassword } from "@/lib/auth/auth-client";
 
 interface ChangePasswordValues {
   currentPassword: string;

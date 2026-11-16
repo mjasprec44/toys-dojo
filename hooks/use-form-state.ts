@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState, type FormEvent } from "react";
+import { getInitialValues } from "@/lib/form-helpers";
 import type {
   FieldConfig,
   FormProps,
@@ -8,7 +9,6 @@ import type {
   FormValues,
   FormValuesRecord,
 } from "@/types";
-import { getInitialValues } from "@/lib/form-helpers";
 
 type UseFormStateOptions<F extends readonly FieldConfig[]> = Pick<
   FormProps<F>,

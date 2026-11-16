@@ -1,6 +1,6 @@
-import { ROUTES } from "@/constants/route";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/route";
 
 function AuthButtons() {
   return (

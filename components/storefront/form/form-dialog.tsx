@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useImperativeHandle, type FormEvent } from "react";
-import type { FieldConfig, FormDialogProps, FormValues } from "@/types";
-import { renderField } from "@/lib/form-helpers";
-import { useFormState } from "@/hooks/use-form-state";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -14,8 +12,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { useFormState } from "@/hooks/use-form-state";
+import { renderField } from "@/lib/form-helpers";
+import type { FieldConfig, FormDialogProps, FormValues } from "@/types";
 
 export function FormDialog<const F extends readonly FieldConfig[]>({
   trigger,

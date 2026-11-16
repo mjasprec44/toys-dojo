@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { navLinks } from "@/constants/nav-links";
-import Link from "next/link";
 
 function NavLinks() {
   return (

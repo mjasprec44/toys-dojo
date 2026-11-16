@@ -1,12 +1,12 @@
 import { betterAuth, User } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { nextCookies } from "better-auth/next-js";
 import { MongoClient } from "mongodb";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { cache } from "react";
 import { getMongoUri } from "../dbConnect";
 import { sendEmail } from "../email";
-import { nextCookies } from "better-auth/next-js";
-import { headers } from "next/headers";
-import { cache } from "react";
-import { redirect } from "next/navigation";
 import { initializeUserBoard } from "../init-user-board";
 import { ROUTES } from "@/constants/route";
 

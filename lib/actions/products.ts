@@ -1,10 +1,10 @@
 "use server";
 
-import { CreateProductPropTypes } from "@/types";
 import { getSession } from "../auth/auth";
 import dbConnect from "../dbConnect";
 import { Board, Column, Product } from "../models";
 import { uniqueSlug } from "../utils/slug";
+import { CreateProductPropTypes } from "@/types";
 
 export async function createProduct(data: CreateProductPropTypes) {
   try {

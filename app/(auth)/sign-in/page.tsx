@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-
+import { Form } from "@/components/storefront/form/form-card";
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/route";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 import { SignInValues } from "@/types";
 
-import { ROUTES } from "@/constants/route";
-import { useRouter } from "next/navigation";
-import { Form } from "@/components/storefront/form/form-card";
 
 function SignIn() {
   const router = useRouter();
@@ -30,7 +29,7 @@ function SignIn() {
     <>
       <Link
         href="/forgot-password"
-        className="text-primary hover:bg-background/10 w-full rounded-lg text-center border border-accent-foreground py-1.25 -mt-3"
+        className="text-primary hover:bg-background/10 border-accent-foreground -mt-3 w-full rounded-lg border py-1.25 text-center"
       >
         Forgot Password
       </Link>
@@ -40,7 +39,7 @@ function SignIn() {
           variant="outline"
           onClick={handleLoginWithGoogle}
         >
-          <div className="flex gap-2 items-center w-45">
+          <div className="flex w-45 items-center gap-2">
             <FcGoogle />
             <span className="text-foreground">Sign in with Google</span>
           </div>
@@ -51,15 +50,18 @@ function SignIn() {
           variant="outline"
           onClick={handleLoginWithFacebook}
         >
-          <div className="flex gap-2 items-center w-45">
+          <div className="flex w-45 items-center gap-2">
             <SiFacebook className="text-blue-900" />
             <span className="text-foreground">Sign in with Facebook</span>
           </div>
         </Button>
       </section>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Don&apos;t have an account?{" "}
-        <Link href="/sign-up" className="text-primary hover:underline">
+        <Link
+          href="/sign-up"
+          className="text-primary hover:underline"
+        >
           Sign up
         </Link>
       </p>
@@ -91,7 +93,7 @@ function SignIn() {
   };
 
   return (
-    <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-background p-4">
+    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Form
         title="Sign in to your account"
         description="Enter your email and password to sign in."

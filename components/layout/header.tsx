@@ -1,9 +1,9 @@
-import { Suspense } from "react";
-import { ROUTES } from "@/constants/route";
 import { Bot } from "lucide-react";
-import Navbar from "./navbar";
 import Link from "next/link";
+import { Suspense } from "react";
 import { Skeleton } from "../ui/skeleton";
+import Navbar from "./navbar";
+import { ROUTES } from "@/constants/route";
 
 function Header() {
   return (

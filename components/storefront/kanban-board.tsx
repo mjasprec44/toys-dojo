@@ -1,6 +1,5 @@
 "use client";
 
-import { Board, Column } from "@/lib/models/models.types";
 import {
   CirclePause,
   List,
@@ -10,6 +9,7 @@ import {
   Star,
   Trash2,
 } from "lucide-react";
+import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   DropdownMenu,
@@ -17,8 +17,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
 import CreateProductDialog from "./create-product-dialog";
+import { Board, Column } from "@/lib/models/models.types";
 
 interface ColConfig {
   color: string;

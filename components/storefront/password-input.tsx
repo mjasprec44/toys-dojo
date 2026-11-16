@@ -1,10 +1,10 @@
 "use client";
 
-import * as React from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { cn } from "@/lib/utils"; // Your shadcn cn utility
+import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils"; // Your shadcn cn utility
 
 // Derive the props type from the Input component
 type InputProps = React.ComponentProps<typeof Input>;

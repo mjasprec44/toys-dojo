@@ -1,13 +1,12 @@
 "use client";
-import { ROUTES } from "@/constants/route";
+import { useRouter } from "next/navigation";
+import { IoIosLogOut } from "react-icons/io";
 import {
   DropdownMenuItem,
   DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
+import { ROUTES } from "@/constants/route";
 import { signOut } from "@/lib/auth/auth-client";
-
-import { useRouter } from "next/navigation";
-import { IoIosLogOut } from "react-icons/io";
 
 function SignOutButton() {
   const router = useRouter();
