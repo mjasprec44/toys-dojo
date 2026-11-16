@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
+import { signInSchema } from "../_lib/schemas";
 import { Form } from "@/components/shared/form/FormCard";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
@@ -122,6 +123,7 @@ function SignIn() {
         }}
         onSubmit={handleSubmit}
         info={Info}
+        schema={signInSchema}
       />
     </section>
   );
