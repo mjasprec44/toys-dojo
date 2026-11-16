@@ -30,7 +30,7 @@ function SignIn() {
     <>
       <Link
         href="/forgot-password"
-        className="text-primary hover:underline  w-full p-1 rounded-lg text-center"
+        className="text-primary hover:bg-background/10 w-full rounded-lg text-center border border-accent-foreground py-1.25 -mt-3"
       >
         Forgot Password
       </Link>
@@ -42,7 +42,7 @@ function SignIn() {
         >
           <div className="flex gap-2 items-center w-45">
             <FcGoogle />
-            <span className="text-gray-800">Sign in with Google</span>
+            <span className="text-foreground">Sign in with Google</span>
           </div>
         </Button>
 
@@ -53,7 +53,7 @@ function SignIn() {
         >
           <div className="flex gap-2 items-center w-45">
             <SiFacebook className="text-blue-900" />
-            <span className="text-gray-800">Sign in with Facebook</span>
+            <span className="text-foreground">Sign in with Facebook</span>
           </div>
         </Button>
       </section>

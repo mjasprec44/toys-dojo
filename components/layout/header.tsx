@@ -7,7 +7,7 @@ import { Skeleton } from "../ui/skeleton";
 
 function Header() {
   return (
-    <header className="bg-background border-b border-primary/40">
+    <header className="bg-background border-b">
       <section className="container mx-auto h-16 flex items-center justify-between p-4">
         <Link
           href={ROUTES.HOME}

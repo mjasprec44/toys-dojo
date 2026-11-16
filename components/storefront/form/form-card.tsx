@@ -90,7 +90,7 @@ export function Form<const F extends readonly FieldConfig[]>({
               {serverError}
             </p>
           )}
-          <CardFooter className="flex flex-col space-y-4 border-t-0 px-0">
+          <CardFooter className="flex flex-col space-y-4 bg-transparent border-t-0 px-0">
             <Button
               type="submit"
               disabled={isSubmitting}
