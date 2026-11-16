@@ -5,10 +5,10 @@ import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "../ui/button";
-import { FormDialog } from "./form/form-dialog";
-import { PRODUCT_FORM_FIELDS } from "@/constants/product-form-fields";
-import { createProduct } from "@/lib/actions/products";
+import { createProduct } from "../actions/products";
+import { FormDialog } from "@/components/shared/form/form-dialog";
+import { Button } from "@/components/ui/button";
+import { PRODUCT_FORM_FIELDS } from "@/features/products/utils/product-form-fields";
 import { ProductFormValues } from "@/types";
 
 interface CreateProductDialogProps {

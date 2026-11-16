@@ -1,5 +1,6 @@
 import { FieldConfig } from "@/types";
-import { CONDITIONS, STATUS, TAGS } from "@/types/product.types";
+// eslint-disable-next-line import/order
+import { CONDITIONS, STATUS, TAGS } from "../types/product.types";
 
 /* ------------------------------ Helpers ----------------------------------- */
 

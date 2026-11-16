@@ -1,9 +1,9 @@
 "use server";
 
-import { getSession } from "../auth/auth";
-import dbConnect from "../dbConnect";
-import { Board, Column, Product } from "../models";
-import { uniqueSlug } from "../utils/slug";
+import { getSession } from "../../../lib/auth/auth";
+import dbConnect from "../../../lib/dbConnect";
+import { Board, Column, Product } from "../../../lib/models";
+import { uniqueSlug } from "../../../lib/utils/slug";
 import { CreateProductPropTypes } from "@/types";
 
 export async function createProduct(data: CreateProductPropTypes) {

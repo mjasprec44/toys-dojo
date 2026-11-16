@@ -9,14 +9,19 @@ import {
   Star,
   Trash2,
 } from "lucide-react";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Button } from "../../../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "../../../components/ui/dropdown-menu";
 import CreateProductDialog from "./create-product-dialog";
 import { Board, Column } from "@/lib/models/models.types";
 
@@ -61,12 +66,12 @@ const COLUMN_CONFIG: Array<ColConfig> = [
 
 const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
   return (
-    <Card className="min-w-75 shrink-0 shadow-md p-0">
-      <CardHeader className={`${config.color} text-white rounded-t-lg py-3`}>
-        <div className="flex justify-between items-center">
+    <Card className="min-w-75 shrink-0 p-0 shadow-md">
+      <CardHeader className={`${config.color} rounded-t-lg py-3 text-white`}>
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             {config.icon}
-            <CardTitle className="text-white text-base font-semibold">
+            <CardTitle className="text-base font-semibold text-white">
               {column.name}
             </CardTitle>
           </div>
@@ -77,16 +82,19 @@ const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-6 w-6 hover:bg-white/20 hover:cursor-pointer"
+                  className="h-6 w-6 hover:cursor-pointer hover:bg-white/20"
                 >
                   <MoreVertical className="h-4 w-4" />
                 </Button>
               }
             />
 
-            <DropdownMenuContent className="w-auto" align="end">
+            <DropdownMenuContent
+              className="w-auto"
+              align="end"
+            >
               <DropdownMenuItem className="text-destructive">
-                <Trash2 className=" h-4 w-4" />
+                <Trash2 className="h-4 w-4" />
                 Delete Column
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -94,8 +102,11 @@ const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-2 pt-4 min-h-100 rounded-b-lg">
-        <CreateProductDialog columnId={column._id} boardId={boardId} />
+      <CardContent className="min-h-100 space-y-2 rounded-b-lg pt-4">
+        <CreateProductDialog
+          columnId={column._id}
+          boardId={boardId}
+        />
       </CardContent>
     </Card>
   );

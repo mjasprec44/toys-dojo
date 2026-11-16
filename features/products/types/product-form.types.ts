@@ -1,5 +1,5 @@
-import { FormValues } from "./form.types";
-import type { PRODUCT_FORM_FIELDS } from "@/constants/product-form-fields";
+import { FormValues } from "../../../types/form.types";
+import type { PRODUCT_FORM_FIELDS } from "@/features/products/utils/product-form-fields";
 
 export type ProductFormFieldName = (typeof PRODUCT_FORM_FIELDS)[number]["name"];
 
