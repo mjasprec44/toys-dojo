@@ -1,21 +1,6 @@
-import { ROUTES } from "@/constants/route";
 import { Button } from "@/components/ui/button";
+import { navLinks } from "@/constants/nav-links";
 import Link from "next/link";
-
-const navLinks = [
-  {
-    route: ROUTES.MARKET_PLACE,
-    label: "Market Place",
-  },
-  {
-    route: ROUTES.MY_COLLECTION,
-    label: "My Collection",
-  },
-  {
-    route: ROUTES.DASHBOARD,
-    label: "Dashboard",
-  },
-];
 
 function NavLinks() {
   return (

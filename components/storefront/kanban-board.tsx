@@ -94,7 +94,7 @@ const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-2 pt-4 bg-gray-50/50 min-h-100 rounded-b-lg">
+      <CardContent className="space-y-2 pt-4 min-h-100 rounded-b-lg">
         <CreateProductDialog columnId={column._id} boardId={boardId} />
       </CardContent>
     </Card>
