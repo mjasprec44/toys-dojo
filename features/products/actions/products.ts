@@ -1,10 +1,12 @@
 "use server";
 
-import { getSession } from "../../../lib/auth/auth";
-import dbConnect from "../../../lib/dbConnect";
-import { Board, Column, Product } from "../../../lib/models";
-import { uniqueSlug } from "../../../lib/utils/slug";
-import { CreateProductPropTypes } from "@/types";
+import { CreateProductPropTypes } from "../types/product-form.types";
+import { getSession } from "@/lib/auth/auth";
+import dbConnect from "@/lib/dbConnect";
+import Board from "@/lib/models/board";
+import Column from "@/lib/models/column";
+import Product from "@/lib/models/product";
+import { uniqueSlug } from "@/lib/utils/slug";
 
 export async function createProduct(data: CreateProductPropTypes) {
   try {

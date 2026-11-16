@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import KanbanBoard from "@/features/products/components/kanban-board";
 import { getSession } from "@/lib/auth/auth";
 import dbConnect from "@/lib/dbConnect";
-import { Board } from "@/lib/models";
+import Board from "@/lib/models/board";
 
 async function getBoard(userId: string) {
   "use cache";

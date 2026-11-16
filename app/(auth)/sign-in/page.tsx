@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { AuthExtras } from "../_component/AuthExtras";
 import { signInSchema } from "../_lib/schemas";
+import { SignInValues } from "../_types/auth.types";
 import { Form } from "@/components/shared/form/FormCard";
 import { ROUTES } from "@/constants/route";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
-import { SignInValues } from "@/types";
 
 function SignIn() {
   const router = useRouter();

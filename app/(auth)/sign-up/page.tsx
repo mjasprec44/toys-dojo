@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import { AuthExtras } from "../_component/AuthExtras";
 import { signUpSchema } from "../_lib/schemas";
+import { SignUpValues } from "../_types/auth.types";
 import { Form } from "@/components/shared/form/FormCard";
 import { ROUTES } from "@/constants/route";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
-import { SignUpValues } from "@/types";
-import { FormHandle } from "@/types";
+import { FormHandle } from "@/types/form.types";
 
 function SignUp() {
   const router = useRouter();
@@ -95,13 +95,6 @@ function SignUp() {
             minLength: 8,
           },
         ]}
-        validate={(values) => {
-          const errors: Record<string, string> = {};
-          if (values.password !== values.confirmPassword) {
-            errors.confirmPassword = "Passwords do not match.";
-          }
-          return errors;
-        }}
         onSubmit={handleSubmit}
         info={
           <AuthExtras

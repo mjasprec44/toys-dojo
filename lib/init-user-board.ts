@@ -1,5 +1,6 @@
 import dbConnect from "./dbConnect";
-import { Board, Column } from "./models";
+import Board from "./models/board";
+import Column from "./models/column";
 
 const DEFAULT_COLUMNS = [
   {
