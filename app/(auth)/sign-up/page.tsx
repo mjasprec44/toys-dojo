@@ -1,12 +1,10 @@
 "use client";
-import Link from "next/link";
+
 import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { SiFacebook } from "react-icons/si";
+import { AuthExtras } from "../_component/AuthExtras";
 import { signUpSchema } from "../_lib/schemas";
 import { Form } from "@/components/shared/form/FormCard";
-import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";
 import { SignUpValues } from "@/types";
@@ -25,43 +23,6 @@ function SignUp() {
   const handleLoginWithFacebook = async () => {
     await signInWithSocial("facebook");
   };
-
-  const Info = (
-    <>
-      <section className="w-full space-y-1">
-        <Button
-          className="w-full"
-          variant="outline"
-          onClick={handleLoginWithGoogle}
-        >
-          <div className="flex w-45 items-center gap-2">
-            <FcGoogle />
-            <span className="text-gray-800">Sign up with Google</span>
-          </div>
-        </Button>
-
-        <Button
-          className="w-full"
-          variant="outline"
-          onClick={handleLoginWithFacebook}
-        >
-          <div className="flex w-45 items-center gap-2">
-            <SiFacebook className="text-blue-900" />
-            <span className="text-gray-800">Sign up with Facebook</span>
-          </div>
-        </Button>
-      </section>
-      <p className="text-muted-foreground text-sm">
-        Already have an account?{" "}
-        <Link
-          href={ROUTES.SIGN_IN}
-          className="text-primary hover:underline"
-        >
-          Sign in
-        </Link>
-      </p>
-    </>
-  );
 
   const handleSubmit = async (values: SignUpValues) => {
     setSubmitting(true);
@@ -142,7 +103,13 @@ function SignUp() {
           return errors;
         }}
         onSubmit={handleSubmit}
-        info={Info}
+        info={
+          <AuthExtras
+            mode="sign-up"
+            onGoogle={handleLoginWithGoogle}
+            onFacebook={handleLoginWithFacebook}
+          />
+        }
         schema={signUpSchema}
       />
     </section>

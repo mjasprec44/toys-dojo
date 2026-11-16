@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { SiFacebook } from "react-icons/si";
+import { AuthExtras } from "../_component/AuthExtras";
 import { signInSchema } from "../_lib/schemas";
 import { Form } from "@/components/shared/form/FormCard";
-import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 import { SignInValues } from "@/types";
@@ -24,49 +21,6 @@ function SignIn() {
   const handleLoginWithFacebook = async () => {
     await signInWithSocial("facebook");
   };
-
-  const Info = (
-    <>
-      <Link
-        href="/forgot-password"
-        className="text-primary hover:bg-background/10 border-accent-foreground -mt-3 w-full rounded-md border py-1 text-center"
-      >
-        Forgot Password
-      </Link>
-      <section className="w-full space-y-1">
-        <Button
-          className="w-full hover:cursor-pointer hover:shadow-sm"
-          variant="outline"
-          onClick={handleLoginWithGoogle}
-        >
-          <div className="flex w-45 items-center gap-2">
-            <FcGoogle />
-            <span className="text-foreground">Sign in with Google</span>
-          </div>
-        </Button>
-
-        <Button
-          className="w-full hover:cursor-pointer hover:shadow-sm"
-          variant="outline"
-          onClick={handleLoginWithFacebook}
-        >
-          <div className="flex w-45 items-center gap-2">
-            <SiFacebook className="text-blue-900" />
-            <span className="text-foreground">Sign in with Facebook</span>
-          </div>
-        </Button>
-      </section>
-      <p className="text-muted-foreground text-sm">
-        Don&apos;t have an account?{" "}
-        <Link
-          href="/sign-up"
-          className="text-primary hover:underline"
-        >
-          Sign up
-        </Link>
-      </p>
-    </>
-  );
 
   const handleSubmit = async (values: SignInValues) => {
     setSubmitting(true);
@@ -122,7 +76,13 @@ function SignIn() {
           return errors;
         }}
         onSubmit={handleSubmit}
-        info={Info}
+        info={
+          <AuthExtras
+            mode="sign-in"
+            onGoogle={handleLoginWithGoogle}
+            onFacebook={handleLoginWithFacebook}
+          />
+        }
         schema={signInSchema}
       />
     </section>
