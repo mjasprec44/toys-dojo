@@ -2,19 +2,19 @@ import { Bot } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Skeleton } from "../ui/skeleton";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import { ROUTES } from "@/constants/route";
 
-function Header() {
+export default function Header() {
   return (
     <header className="bg-background border-b">
-      <section className="container mx-auto h-16 flex items-center justify-between p-4">
+      <section className="container mx-auto flex h-16 items-center justify-between p-4">
         <Link
           href={ROUTES.HOME}
-          className="flex items-center gap-3 text-primary"
+          className="text-primary flex items-center gap-3"
         >
           <Bot size={36} />
-          <h1 className="text-xl text-primary font-semibold pt-1 tracking-widest">
+          <h1 className="text-primary pt-1 text-xl font-semibold tracking-widest">
             Toys Dojo
           </h1>
         </Link>
@@ -26,5 +26,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

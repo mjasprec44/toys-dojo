@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { createProduct } from "../actions/products";
-import { FormDialog } from "@/components/shared/form/form-dialog";
+import { FormDialog } from "@/components/shared/form/FormDialog";
 import { Button } from "@/components/ui/button";
 import { PRODUCT_FORM_FIELDS } from "@/features/products/utils/product-form-fields";
 import { ProductFormValues } from "@/types";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/shared/form/form-card";
+import { Form } from "@/components/shared/form/FormCard";
 import { changePassword } from "@/lib/auth/auth-client";
 
 interface ChangePasswordValues {

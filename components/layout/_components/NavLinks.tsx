@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { navLinks } from "@/constants/nav-links";
 
-function NavLinks() {
+export default function NavLinks() {
   return (
     <ul className="flex items-center gap-2">
       {navLinks.map((link) => (
@@ -10,7 +10,7 @@ function NavLinks() {
           <Link href={link.route}>
             <Button
               variant="ghost"
-              className="text-foreground hover:cursor-pointer hover:bg-muted"
+              className="text-foreground hover:bg-muted hover:cursor-pointer"
             >
               {link.label}
             </Button>
@@ -20,5 +20,3 @@ function NavLinks() {
     </ul>
   );
 }
-
-export default NavLinks;

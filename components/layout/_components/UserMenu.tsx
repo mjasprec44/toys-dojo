@@ -1,5 +1,5 @@
-import { ModeToggle } from "./mode-toggle";
-import SignOutButton from "./sign-out-button";
+import ModeToggle from "./ModeToggle";
+import SignOutButton from "./SignOutButton";
 import {
   Avatar,
   AvatarBadge,
@@ -25,14 +25,14 @@ type UserProfileProps = {
   userData: UserDataType;
 };
 
-function UserMenu({ userData }: UserProfileProps) {
+export default function UserMenu({ userData }: UserProfileProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
           <Button
             variant="ghost"
-            className="rounded-full hover:bg-transparent! hover:cursor-pointer"
+            className="rounded-full hover:cursor-pointer hover:bg-transparent!"
           >
             <Avatar>
               <AvatarImage
@@ -74,5 +74,3 @@ function UserMenu({ userData }: UserProfileProps) {
     </DropdownMenu>
   );
 }
-
-export default UserMenu;

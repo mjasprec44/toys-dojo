@@ -1,5 +1,5 @@
-import { ImageUploader } from "@/components/shared/image-upload";
-import { PasswordInput } from "@/components/shared/password-input";
+import { ImageUploader } from "@/components/shared/ImageUpload";
+import { PasswordInput } from "@/components/shared/PasswordInput";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";

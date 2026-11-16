@@ -8,7 +8,7 @@ import {
 import { ROUTES } from "@/constants/route";
 import { signOut } from "@/lib/auth/auth-client";
 
-function SignOutButton() {
+export default function SignOutButton() {
   const router = useRouter();
 
   const handleSignOut = async () => {
@@ -25,7 +25,7 @@ function SignOutButton() {
   return (
     <DropdownMenuItem
       onClick={handleSignOut}
-      className="text-sm text-muted-foreground cursor-pointer"
+      className="text-muted-foreground cursor-pointer text-sm"
     >
       Log Out
       <DropdownMenuShortcut>
@@ -34,5 +34,3 @@ function SignOutButton() {
     </DropdownMenuItem>
   );
 }
-
-export default SignOutButton;

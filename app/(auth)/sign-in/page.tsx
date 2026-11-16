@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import { Form } from "@/components/shared/form/form-card";
+import { Form } from "@/components/shared/form/FormCard";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
@@ -28,7 +28,7 @@ function SignIn() {
     <>
       <Link
         href="/forgot-password"
-        className="text-primary hover:bg-background/10 border-accent-foreground -mt-3 w-full rounded-lg border py-1.25 text-center"
+        className="text-primary hover:bg-background/10 border-accent-foreground -mt-3 w-full rounded-md border py-1 text-center"
       >
         Forgot Password
       </Link>

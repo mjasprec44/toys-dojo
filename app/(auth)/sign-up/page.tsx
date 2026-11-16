@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
-import { Form } from "@/components/shared/form/form-card";
+import { Form } from "@/components/shared/form/FormCard";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 import { signInWithSocial, signUp } from "@/lib/auth/auth-client";

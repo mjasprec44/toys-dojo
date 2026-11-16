@@ -2,18 +2,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/route";
 
-function AuthButtons() {
+export default function AuthButtons() {
   return (
     <section className="flex items-center gap-3">
-      <Link href={ROUTES.SIGN_IN} className="">
+      <Link
+        href={ROUTES.SIGN_IN}
+        className=""
+      >
         <Button
-          className="text-gray-700 hover:text-black hover:cursor-pointer"
+          className="text-gray-700 hover:cursor-pointer hover:text-black"
           variant="ghost"
         >
           Sign In
         </Button>
       </Link>
-      <Link href={ROUTES.SIGN_UP} className="">
+      <Link
+        href={ROUTES.SIGN_UP}
+        className=""
+      >
         <Button className="hover:bg-primary/80 hover:cursor-pointer">
           Sign Up
         </Button>
@@ -21,5 +27,3 @@ function AuthButtons() {
     </section>
   );
 }
-
-export default AuthButtons;

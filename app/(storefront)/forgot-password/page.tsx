@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Form } from "@/components/shared/form/form-card";
+import { Form } from "@/components/shared/form/FormCard";
 import { Button } from "@/components/ui/button";
 import {
   Item,
