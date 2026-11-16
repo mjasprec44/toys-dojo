@@ -2,7 +2,7 @@ import { MailCheck } from "lucide-react";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 import { getSession } from "@/lib/auth/auth";
 
 async function VerifyEmailContent() {
@@ -13,10 +13,10 @@ async function VerifyEmailContent() {
   }
 
   return (
-    <Card className="w-full max-w-sm my-30 p-4 shadow-md">
+    <Card className="my-30 w-full max-w-sm p-4 shadow-md">
       <CardTitle className="flex items-center gap-2">
         <span>Verify Your Email</span>
-        <MailCheck className="h-4.5 w-4.5 text-green-500 animate-bounce" />
+        <MailCheck className="h-4.5 w-4.5 animate-bounce text-green-500" />
       </CardTitle>
 
       <CardDescription>
@@ -29,7 +29,7 @@ async function VerifyEmailContent() {
 
 export default function VerifyEmailPage() {
   return (
-    <section className="min-h-screen w-full flex items-start justify-center">
+    <section className="flex min-h-screen w-full items-start justify-center">
       <Suspense fallback={<div>Loading...</div>}>
         <VerifyEmailContent />
       </Suspense>

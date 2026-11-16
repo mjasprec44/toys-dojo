@@ -8,7 +8,7 @@ import { cache } from "react";
 import { getMongoUri } from "../dbConnect";
 import { sendEmail } from "../email";
 import { initializeUserBoard } from "../init-user-board";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 
 const client = new MongoClient(getMongoUri());
 const db = client.db();

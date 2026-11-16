@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 import { signOut } from "@/lib/auth/auth-client";
 
 export default function SignOutButton() {

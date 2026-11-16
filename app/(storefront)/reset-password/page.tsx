@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 import { resetPassword } from "@/lib/auth/auth-client";
 
 function ResetPasswordPageContent() {

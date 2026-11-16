@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { Button } from "@/components/ui/button";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 
 type AuthMode = "sign-in" | "sign-up";
 

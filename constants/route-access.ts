@@ -1,4 +1,4 @@
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 
 // src/config/route-access.ts
 export const PUBLIC_ROUTES = [

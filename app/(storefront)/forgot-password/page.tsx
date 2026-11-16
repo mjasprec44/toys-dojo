@@ -12,7 +12,7 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 import { requestPasswordReset } from "@/lib/auth/auth-client";
 
 export default function ForgotPasswordContent() {

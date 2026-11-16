@@ -6,7 +6,7 @@ import { AuthExtras } from "../_component/AuthExtras";
 import { signInSchema } from "../_lib/schemas";
 import { SignInValues } from "../_types/auth.types";
 import { Form } from "@/components/shared/form/FormCard";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 import { signIn, signInWithSocial } from "@/lib/auth/auth-client";
 
 function SignIn() {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Skeleton } from "../ui/skeleton";
 import Navbar from "./Navbar";
-import { ROUTES } from "@/constants/route";
+import { ROUTES } from "@/constants/routes";
 
 export default function Header() {
   return (
