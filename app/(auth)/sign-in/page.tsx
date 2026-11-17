@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 import { AuthExtras } from "../_component/AuthExtras";
 import { signInSchema } from "../_lib/schemas";
 import { SignInValues } from "../_types/auth.types";
@@ -34,6 +35,7 @@ function SignIn() {
 
       if (res.error) {
         setServerError(res.error.message || "Failed to sign in");
+        toast.error(res.error.message || "Failed to sign in");
       } else {
         router.refresh();
         router.push(ROUTES.DASHBOARD);

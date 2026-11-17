@@ -1,4 +1,3 @@
-// lib/email.ts
 import nodemailer from "nodemailer";
 
 // Setup the transporter using environment variables

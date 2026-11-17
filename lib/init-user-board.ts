@@ -4,23 +4,23 @@ import Column from "./models/column";
 
 const DEFAULT_COLUMNS = [
   {
-    name: "Wish List",
+    name: "To List",
     order: 0,
   },
   {
-    name: "To List",
+    name: "Listed",
     order: 1,
   },
   {
-    name: "Listed",
+    name: "On Hold",
     order: 2,
   },
   {
-    name: "On Hold",
+    name: "Sold",
     order: 3,
   },
   {
-    name: "Sold",
+    name: "Cancelled",
     order: 4,
   },
 ];

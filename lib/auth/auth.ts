@@ -43,7 +43,7 @@ export const auth = betterAuth({
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url, token }, request) => {
-      void sendEmail({
+      await sendEmail({
         to: user.email,
         subject: "Toys Dojo - Verify your email address",
         text: `Click the link to verify your email: ${url}`,
@@ -73,7 +73,6 @@ export const auth = betterAuth({
       maxAge: 5 * 60, // 5 minutes (adjust based on your security needs)
     },
   },
-
   databaseHooks: {
     user: {
       create: {
