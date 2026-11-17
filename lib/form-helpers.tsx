@@ -3,7 +3,7 @@ import { PasswordInput } from "@/components/shared/PasswordInput";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import type { FieldConfig, FormValue, FormValuesRecord } from "@/types";
+import { FieldConfig, FormValue, FormValuesRecord } from "@/types/form.types";
 
 export function getInitialValues(
   fields: readonly FieldConfig[],

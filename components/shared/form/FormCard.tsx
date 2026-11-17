@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useFormState } from "@/hooks/use-form-state";
 import { renderField } from "@/lib/form-helpers";
-import type { FormProps, FieldConfig, FormValues } from "@/types";
+import { FieldConfig, FormProps, FormValues } from "@/types/form.types";
 
 export function Form<const F extends readonly FieldConfig[]>({
   title,
@@ -43,24 +43,34 @@ export function Form<const F extends readonly FieldConfig[]>({
   };
 
   return (
-    <Card className="w-full max-w-md border-border shadow-lg animate-fade-in">
+    <Card className="border-border animate-fade-in w-full max-w-md shadow-lg">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-foreground">
+        <CardTitle className="text-foreground text-2xl font-bold">
           {title}
         </CardTitle>
         {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
 
-      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        className="space-y-4"
+      >
         <CardContent className="space-y-4">
           {fields.map((field) => {
             const error =
               form.errors[field.name] ||
               fieldErrors?.[field.name as keyof FormValues<F> & string];
             return (
-              <div key={field.name} className="space-y-2">
+              <div
+                key={field.name}
+                className="space-y-2"
+              >
                 {field.type !== "checkbox" && (
-                  <Label htmlFor={field.name} className="text-gray-700">
+                  <Label
+                    htmlFor={field.name}
+                    className="text-gray-700"
+                  >
                     {field.label}
                   </Label>
                 )}
@@ -70,12 +80,15 @@ export function Form<const F extends readonly FieldConfig[]>({
                 )}
 
                 {error ? (
-                  <p className="text-sm text-destructive" role="alert">
+                  <p
+                    className="text-destructive text-sm"
+                    role="alert"
+                  >
                     {error}
                   </p>
                 ) : (
                   field.description && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-muted-foreground text-sm">
                       {field.description}
                     </p>
                   )
@@ -85,15 +98,18 @@ export function Form<const F extends readonly FieldConfig[]>({
           })}
 
           {serverError && (
-            <p className="text-sm text-destructive" role="alert">
+            <p
+              className="text-destructive text-sm"
+              role="alert"
+            >
               {serverError}
             </p>
           )}
-          <CardFooter className="flex flex-col space-y-4 bg-transparent border-t-0 px-0">
+          <CardFooter className="flex flex-col space-y-4 border-t-0 bg-transparent px-0">
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary text-white hover:bg-primary/90 hover:cursor-pointer hover:shadow-sm"
+              className="bg-primary hover:bg-primary/90 w-full text-white hover:cursor-pointer hover:shadow-sm"
             >
               {isSubmitting ? (
                 <>

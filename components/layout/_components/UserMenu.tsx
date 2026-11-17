@@ -19,7 +19,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { UserDataType } from "@/types";
+import { UserDataType } from "@/types/userData.types";
 
 type UserProfileProps = {
   userData: UserDataType;

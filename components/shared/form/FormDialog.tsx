@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 import { useFormState } from "@/hooks/use-form-state";
 import { renderField } from "@/lib/form-helpers";
-import type { FieldConfig, FormDialogProps, FormValues } from "@/types";
+import { FieldConfig, FormDialogProps, FormValues } from "@/types/form.types";
 
 export function FormDialog<const F extends readonly FieldConfig[]>({
   trigger,
@@ -72,9 +72,12 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={setOpen}
+    >
       {trigger && <DialogTrigger render={trigger} />}
-      <DialogContent className="sm:max-w-md flex flex-col max-h-[90dvh] overflow-hidden">
+      <DialogContent className="flex max-h-[90dvh] flex-col overflow-hidden sm:max-w-md">
         <DialogHeader className="shrink-0">
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
@@ -83,15 +86,18 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="flex flex-col flex-1 min-h-0 gap-4"
+          className="flex min-h-0 flex-1 flex-col gap-4"
         >
-          <div className="space-y-4 overflow-y-auto flex-1 min-h-0 px-1">
+          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-1">
             {fields.map((field) => {
               const error =
                 form.errors[field.name] ||
                 fieldErrors?.[field.name as keyof FormValues<F> & string];
               return (
-                <div key={field.name} className="space-y-2">
+                <div
+                  key={field.name}
+                  className="space-y-2"
+                >
                   {field.type !== "checkbox" && (
                     <Label htmlFor={field.name}>{field.label}</Label>
                   )}
@@ -101,12 +107,15 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
                   )}
 
                   {error ? (
-                    <p className="text-sm text-destructive" role="alert">
+                    <p
+                      className="text-destructive text-sm"
+                      role="alert"
+                    >
                       {error}
                     </p>
                   ) : (
                     field.description && (
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         {field.description}
                       </p>
                     )
@@ -116,7 +125,10 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
             })}
 
             {serverError && (
-              <p className="text-sm text-destructive" role="alert">
+              <p
+                className="text-destructive text-sm"
+                role="alert"
+              >
                 {serverError}
               </p>
             )}
@@ -133,7 +145,10 @@ export function FormDialog<const F extends readonly FieldConfig[]>({
             >
               {cancelLabel}
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? (
                 <>
                   Submitting <Spinner />
