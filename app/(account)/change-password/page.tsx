@@ -27,6 +27,7 @@ function ChangePasswordPage() {
 
       if (res.error) {
         setServerError(res.error?.message || "Failed to change password");
+        toast.error(res.error?.message || "Failed to change password");
       } else {
         toast.success("Password changed successfully");
       }

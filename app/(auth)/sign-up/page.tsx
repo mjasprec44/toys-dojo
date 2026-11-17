@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
+import { toast } from "sonner";
 import { AuthExtras } from "../_component/AuthExtras";
 import { signUpSchema } from "../_lib/schemas";
 import { SignUpValues } from "../_types/auth.types";
@@ -36,6 +37,7 @@ function SignUp() {
       });
 
       if (res.error) {
+        toast.error(res.error.message || "Failed to sign up");
         setServerError(res.error.message ?? "Failed to sign up");
       } else {
         formRef.current?.reset();
@@ -43,8 +45,8 @@ function SignUp() {
         router.refresh();
 
         // 2. Then navigate to the verify email page
-        router.refresh();
         router.push(ROUTES.VERIFY_EMAIL);
+        toast.success("A link has been sent to your email to verify.");
       }
     } catch (error) {
       console.error(error);
