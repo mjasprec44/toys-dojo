@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  CirclePause,
-  List,
-  ListCheck,
-  MoreVertical,
-  PhilippinePeso,
-  Star,
-  Trash2,
-} from "lucide-react";
+import { MoreVertical, Trash2 } from "lucide-react";
 import { Button } from "../../../components/ui/button";
 import {
   Card,
@@ -22,49 +14,23 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu";
+import {
+  DroppableColumnProps,
+  KanbanBoardProps,
+} from "../types/kanban-board.types";
+import { COLUMN_CONFIG } from "../utils/column-list";
 import CreateProductDialog from "./create-product-dialog";
-import { Board, Column } from "@/lib/models/models.types";
+import SortableProductCard from "./SortableProductCards";
 
-interface ColConfig {
-  color: string;
-  icon: React.ReactNode;
-}
-
-interface KanbanBoardProps {
-  board: Board;
-  userId: string | undefined;
-}
-
-interface DroppableColumnProps {
-  column: Column;
-  config: ColConfig;
-  boardId: string;
-}
-
-const COLUMN_CONFIG: Array<ColConfig> = [
-  {
-    color: "bg-gradient-to-r from-red-500 to-red-400",
-    icon: <Star className="h-4 w-4" />,
-  },
-  {
-    color: "bg-gradient-to-r from-orange-500 to-yellow-300",
-    icon: <List className="h-4 w-4" />,
-  },
-  {
-    color: "bg-gradient-to-r from-cyan-500 to-cyan-300",
-    icon: <ListCheck className="h-4 w-4" />,
-  },
-  {
-    color: "bg-gradient-to-r from-gray-500 to-gray-300",
-    icon: <CirclePause className="h-4 w-4" />,
-  },
-  {
-    color: "bg-gradient-to-r from-emerald-600 to-green-300",
-    icon: <PhilippinePeso className="h-4 w-4" />,
-  },
-];
-
-const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
+const DroppableColumn = ({
+  column,
+  config,
+  boardId,
+  sortedColumns,
+}: DroppableColumnProps) => {
+  console.log(column);
+  const sortedProduct =
+    column.products?.sort((a, b) => a.order - b.order) || [];
   return (
     <Card className="min-w-75 shrink-0 p-0 shadow-md">
       <CardHeader className={`${config.color} rounded-t-lg py-3 text-white`}>
@@ -103,6 +69,13 @@ const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
       </CardHeader>
 
       <CardContent className="min-h-100 space-y-2 rounded-b-lg pt-4">
+        {sortedProduct.map((prod) => (
+          <SortableProductCard
+            key={prod._id}
+            product={{ ...prod, columnId: prod._id || column._id }}
+            columns={sortedColumns}
+          />
+        ))}
         <CreateProductDialog
           columnId={column._id}
           boardId={boardId}
@@ -114,9 +87,10 @@ const DroppableColumn = ({ column, config, boardId }: DroppableColumnProps) => {
 
 export default function KanbanBoard({ board, userId }: KanbanBoardProps) {
   const columns = board.columns;
+  const sortedProduct = columns?.sort((a, b) => a.order - b.order) || [];
   return (
-    <div className="py-4">
-      <div>
+    <div className="space-y-4">
+      <div className="flex gap-4 overflow-x-scroll pb-4">
         {columns.map((col, key) => {
           const config = COLUMN_CONFIG[key];
           return (
@@ -125,6 +99,7 @@ export default function KanbanBoard({ board, userId }: KanbanBoardProps) {
               column={col}
               config={config}
               boardId={board._id}
+              sortedColumns={sortedProduct}
             />
           );
         })}

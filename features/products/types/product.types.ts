@@ -1,4 +1,3 @@
-// types/product.types.ts — NO mongoose import, ever
 export const TAGS = [
   "dragon-ball",
   "one-piece",
@@ -35,6 +34,7 @@ export type Condition = (typeof CONDITIONS)[number];
 export type Status = (typeof STATUS)[number];
 
 export interface IProduct {
+  _id: string;
   name: string;
   description: string;
   price: number;

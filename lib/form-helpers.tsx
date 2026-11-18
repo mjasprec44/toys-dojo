@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { ImageUploader } from "@/components/shared/ImageUpload";
 import { PasswordInput } from "@/components/shared/PasswordInput";
 import { Input } from "@/components/ui/input";
@@ -69,25 +70,30 @@ export function renderField(
 
     case "select":
       return (
-        <select
-          id={field.name}
-          name={field.name}
-          value={String(value ?? "")}
-          onChange={(e) => onChange(e.target.value)}
-          disabled={field.disabled}
-          required={field.required}
-          className="border-input bg-background ring-offset-background focus:ring-primary focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:ring-2 focus-visible:outline-none"
-        >
-          <option value="">{field.placeholder ?? "Select..."}</option>
-          {field.options.map((opt) => (
-            <option
-              key={opt.value}
-              value={opt.value}
-            >
-              {opt.label}
-            </option>
-          ))}
-        </select>
+        <div className="relative w-full">
+          <select
+            id={field.name}
+            name={field.name}
+            value={String(value ?? "")}
+            onChange={(e) => onChange(e.target.value)}
+            disabled={field.disabled}
+            required={field.required}
+            className="border-input bg-background ring-offset-background focus:ring-primary focus-visible:ring-ring flex h-10 w-full appearance-none rounded-md border px-3 py-2 pr-8 text-sm focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <option value="">{field.placeholder ?? "Select..."}</option>
+            {field.options.map((opt) => (
+              <option
+                key={opt.value}
+                value={opt.value}
+              >
+                {opt.label}
+              </option>
+            ))}
+          </select>
+
+          {/* Custom Caret Icon */}
+          <ChevronDown className="text-muted-foreground pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2" />
+        </div>
       );
 
     case "checkbox":

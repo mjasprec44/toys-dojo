@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import KanbanBoard from "@/features/products/components/kanban-board";
+import KanbanBoard from "@/features/products/components/KanbanBoard";
 import { getSession } from "@/lib/auth/auth";
 import dbConnect from "@/lib/dbConnect";
 import Board from "@/lib/models/board";
+import Product from "@/lib/models/product";
 
 async function getBoard(userId: string) {
   "use cache";
@@ -12,7 +13,10 @@ async function getBoard(userId: string) {
   const data = await Board.findOne({
     userId,
     name: "Listing Board",
-  }).populate({ path: "columns" });
+  }).populate({
+    path: "columns",
+    populate: { path: "products", model: Product },
+  });
 
   const board = JSON.parse(JSON.stringify(data));
 
@@ -41,7 +45,9 @@ async function DashboardContent() {
 
 export default async function Dashboard() {
   return (
-    <Suspense fallback={<Skeleton className="h-6 w-3xl" />}>
+    <Suspense
+      fallback={<Skeleton className="container mx-auto my-20 aspect-video" />}
+    >
       <DashboardContent />
     </Suspense>
   );

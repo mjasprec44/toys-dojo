@@ -25,7 +25,7 @@ export interface Column {
   _id: string;
   name: string;
   order: number;
-  jobApplications: Product[];
+  products: Product[];
 }
 
 export interface Board {
