@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronRightCircle } from "lucide-react";
 import Image from "next/image";
 import * as React from "react";
 import { toast } from "sonner";
@@ -101,13 +102,7 @@ const ImageCarousel = ({ images }: { images: string[] }) => {
   );
 };
 
-export function ProductDetailsDrawer({
-  trigger,
-  product,
-}: {
-  trigger: React.ReactElement;
-  product: IProduct;
-}) {
+export function ProductDetailsDrawer({ product }: { product: IProduct }) {
   const [open, setOpen] = React.useState(false);
   const [deliveryTime, setDeliveryTime] = React.useState("asap");
   const isMobile = useIsMobile();
@@ -132,7 +127,13 @@ export function ProductDetailsDrawer({
       showSwipeHandle={isMobile}
       swipeDirection={isMobile ? "down" : "right"}
     >
-      <DrawerTrigger render={trigger} />
+      <DrawerTrigger
+        render={
+          <Button variant="ghost">
+            <ChevronRightCircle />
+          </Button>
+        }
+      />
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Pick a delivery time</DrawerTitle>

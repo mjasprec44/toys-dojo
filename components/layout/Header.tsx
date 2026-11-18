@@ -11,10 +11,10 @@ export default function Header() {
       <section className="container mx-auto flex h-16 items-center justify-between p-4">
         <Link
           href={ROUTES.HOME}
-          className="text-primary flex items-center gap-3"
+          className="text-foreground flex items-center gap-3"
         >
           <Bot size={36} />
-          <h1 className="text-primary pt-1 text-xl font-semibold tracking-widest">
+          <h1 className="text-foreground pt-1 text-xl font-semibold tracking-widest">
             Toys Dojo
           </h1>
         </Link>

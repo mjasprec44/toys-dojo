@@ -40,7 +40,7 @@ function ChangePasswordPage() {
   };
 
   return (
-    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
+    <main className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Form
         title="Change password"
         description=""
@@ -72,7 +72,7 @@ function ChangePasswordPage() {
         onSubmit={handleSubmit}
         // info={Info}
       />
-    </section>
+    </main>
   );
 }
 

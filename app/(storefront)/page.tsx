@@ -4,7 +4,10 @@ import ImagesSection from "./_components/ImagesSection";
 
 export default function LandingPage() {
   return (
-    <main className="flex flex-col min-h-screen">
+    <main
+      className="flex min-h-screen flex-col"
+      id="main-content"
+    >
       {/* Hero Section */}
       <HeroSection />
       {/* Hero Images Section */}

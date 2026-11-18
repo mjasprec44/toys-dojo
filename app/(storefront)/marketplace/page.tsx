@@ -1,5 +1,5 @@
 function MarketPlace() {
-  return <div>MarketPlace</div>;
+  return <main>MarketPlace</main>;
 }
 
 export default MarketPlace;

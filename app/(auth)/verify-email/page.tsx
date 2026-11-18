@@ -29,10 +29,10 @@ async function VerifyEmailContent() {
 
 export default function VerifyEmailPage() {
   return (
-    <section className="flex min-h-screen w-full items-start justify-center">
+    <main className="flex min-h-screen w-full items-start justify-center">
       <Suspense fallback={<div>Loading...</div>}>
         <VerifyEmailContent />
       </Suspense>
-    </section>
+    </main>
   );
 }

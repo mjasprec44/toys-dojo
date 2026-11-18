@@ -49,7 +49,7 @@ function SignIn() {
   };
 
   return (
-    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
+    <main className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Form
         title="Sign in to your account"
         description="Enter your email and password to sign in."
@@ -87,7 +87,7 @@ function SignIn() {
         }
         schema={signInSchema}
       />
-    </section>
+    </main>
   );
 }
 

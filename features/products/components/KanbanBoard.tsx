@@ -46,11 +46,16 @@ const DroppableColumn = ({
             <DropdownMenuTrigger
               render={
                 <Button
+                  aria-label={`Actions for ${column.name}`}
+                  type="button"
                   variant="ghost"
                   size="icon"
                   className="h-6 w-6 hover:cursor-pointer hover:bg-white/20"
                 >
-                  <MoreVertical className="h-4 w-4" />
+                  <MoreVertical
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
                 </Button>
               }
             />

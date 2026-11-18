@@ -45,7 +45,7 @@ export default function ForgotPasswordContent() {
   };
 
   return (
-    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
+    <main className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       {sent ? (
         <Item className="border-border animate-fade-in w-full max-w-md shadow-lg">
           <ItemContent>
@@ -90,6 +90,6 @@ export default function ForgotPasswordContent() {
           // info={Info}
         />
       )}
-    </section>
+    </main>
   );
 }

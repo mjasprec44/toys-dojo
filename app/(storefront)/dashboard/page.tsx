@@ -28,7 +28,7 @@ async function DashboardContent() {
   const board = await getBoard(session?.user.id || "");
 
   return (
-    <section className="min-h-screen">
+    <main className="min-h-screen">
       <section className="container mx-auto p-6">
         <article className="mb-6">
           <h1 className="text-foreground text-3xl font-bold">{board.name}</h1>
@@ -39,7 +39,7 @@ async function DashboardContent() {
           />
         </article>
       </section>
-    </section>
+    </main>
   );
 }
 

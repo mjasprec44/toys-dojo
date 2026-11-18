@@ -6,18 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   formatPrice,
   formatString,
@@ -35,7 +29,7 @@ const ProductCard = ({
   const { name, condition, price, images, slug } = product;
   const badge = getBadgeConfig(condition);
   return (
-    <Card className="group cursor-pointer py-0 shadow-sm transition-shadow hover:shadow-lg">
+    <Card className="group relative cursor-pointer py-0 shadow-sm transition-shadow hover:shadow-lg">
       <CardContent className="w-72 max-w-72 border p-2">
         <div className="flex gap-2">
           <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md">
@@ -48,12 +42,12 @@ const ProductCard = ({
             />
           </div>
           <div className="flex max-w-36 min-w-0 flex-1 flex-col justify-between gap-1 py-2">
-            <h3
+            <p
               className="truncate text-sm leading-tight font-semibold"
               title={formatString(name)}
             >
               {formatString(name)}
-            </h3>
+            </p>
 
             <div>
               {price != null && (
@@ -77,11 +71,16 @@ const ProductCard = ({
               <DropdownMenuTrigger
                 render={
                   <Button
+                    aria-label={`Actions for ${product.name}`}
+                    type="button"
                     variant="ghost"
                     size="icon"
                     className="h-6 w-6 hover:cursor-pointer hover:bg-white/20"
                   >
-                    <MoreVertical className="h-4 w-4" />
+                    <MoreVertical
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
                   </Button>
                 }
               />
@@ -118,6 +117,10 @@ const ProductCard = ({
             </DropdownMenu>
           </div>
         </div>
+
+        <div className="absolute right-2 bottom-2">
+          <ProductDetailsDrawer product={product} />
+        </div>
       </CardContent>
     </Card>
   );
@@ -132,17 +135,14 @@ export default function SortableProductCard({
 }) {
   return (
     <div>
-      <ProductDetailsDrawer
-        product={product}
-        trigger={
-          <button className="block appearance-none border-0 bg-transparent p-0">
-            <ProductCard
-              product={product}
-              columns={columns}
-            />
-          </button>
-        }
-      />
+      {!product || !columns ? (
+        <Skeleton className="bg-muted-foreground/20 h-32 w-72" />
+      ) : (
+        <ProductCard
+          product={product}
+          columns={columns}
+        />
+      )}
     </div>
   );
 }

@@ -31,6 +31,8 @@ export default function UserMenu({ userData }: UserProfileProps) {
       <DropdownMenuTrigger
         render={
           <Button
+            aria-label={`Actions for ${userData.name}`}
+            type="button"
             variant="ghost"
             className="rounded-full hover:cursor-pointer hover:bg-transparent!"
           >

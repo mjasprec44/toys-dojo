@@ -96,7 +96,7 @@ function ResetPasswordPageContent() {
 
 export default function ResetPasswordPage() {
   return (
-    <section className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
+    <main className="bg-background flex min-h-[calc(100vh-4rem)] items-center justify-center p-4">
       <Suspense
         fallback={
           <Skeleton className="border-border h-52 w-full max-w-md shadow-lg" />
@@ -104,6 +104,6 @@ export default function ResetPasswordPage() {
       >
         <ResetPasswordPageContent />
       </Suspense>
-    </section>
+    </main>
   );
 }

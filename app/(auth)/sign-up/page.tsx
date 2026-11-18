@@ -57,7 +57,7 @@ function SignUp() {
   };
 
   return (
-    <section className="bg-background flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center p-4">
+    <main className="bg-background flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center p-4">
       <Form
         title="Create your account"
         description="We'll email you a link to verify your address."
@@ -107,7 +107,7 @@ function SignUp() {
         }
         schema={signUpSchema}
       />
-    </section>
+    </main>
   );
 }
 
