@@ -1,6 +1,7 @@
 import { ArrowRightLeft, Edit2, MoreVertical, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { IProduct } from "../types/product.types";
+import { ProductDetailsDrawer } from "./ProductDetailsDrawer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,39 +25,6 @@ import {
 } from "@/lib/utils/formatters";
 import { IColumn } from "@/types/common.types";
 
-const ImageCarousel = ({ images }: { images: string[] }) => {
-  if (!images || images.length === 0) return null;
-
-  return (
-    <Carousel
-      className="relative w-full max-w-48 sm:max-w-xs"
-      opts={{
-        align: "start",
-        loop: true,
-      }}
-    >
-      <CarouselContent>
-        {images.map((src, index) => (
-          <CarouselItem key={index}>
-            <Card className="w-full border border-red-500">
-              <CardContent className="relative flex aspect-square items-center justify-center overflow-hidden">
-                <Image
-                  src={src}
-                  alt={`Product image ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </CardContent>
-            </Card>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="left-1 z-10" />
-      <CarouselNext className="right-1 z-10" />
-    </Carousel>
-  );
-};
-
 const ProductCard = ({
   product,
   columns,
@@ -70,22 +38,6 @@ const ProductCard = ({
     <Card className="group cursor-pointer py-0 shadow-sm transition-shadow hover:shadow-lg">
       <CardContent className="w-72 max-w-72 border p-2">
         <div className="flex gap-2">
-          {/* <ImageCarousel images={images} /> */}
-          {/* <div className="flex aspect-square h-12 w-12 items-center justify-center overflow-hidden">
-              <Image
-                src={images[0]}
-                alt={`Product image - ${name}`}
-                fill
-                className="object-cover"
-              />
-            </div> */}
-          {/* <div className="flex flex-row items-center justify-between">
-              
-              <Link href={itemDetail(slug)}>
-                <SquareArrowUpRightExit className="h-4 w-4 hover:cursor-pointer" />
-              </Link>
-            </div> */}
-
           <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md">
             <Image
               src={images[0]}
@@ -165,8 +117,6 @@ const ProductCard = ({
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-
-          {/* <AccordionSection product={product} /> */}
         </div>
       </CardContent>
     </Card>
@@ -182,9 +132,16 @@ export default function SortableProductCard({
 }) {
   return (
     <div>
-      <ProductCard
+      <ProductDetailsDrawer
         product={product}
-        columns={columns}
+        trigger={
+          <button className="block appearance-none border-0 bg-transparent p-0">
+            <ProductCard
+              product={product}
+              columns={columns}
+            />
+          </button>
+        }
       />
     </div>
   );

@@ -19,7 +19,7 @@ import {
   KanbanBoardProps,
 } from "../types/kanban-board.types";
 import { COLUMN_CONFIG } from "../utils/column-list";
-import CreateProductDialog from "./create-product-dialog";
+import CreateProductDialog from "./CreateProductDialog";
 import SortableProductCard from "./SortableProductCards";
 
 const DroppableColumn = ({
