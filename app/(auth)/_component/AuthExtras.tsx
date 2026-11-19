@@ -60,7 +60,7 @@ export function AuthExtras({
           disabled={disabled}
         >
           <div className="flex w-45 items-center gap-2">
-            <FcGoogle />
+            <FcGoogle aria-hidden="true" />
             <span className="text-foreground">{cfg.verb} with Google</span>
           </div>
         </Button>
@@ -73,7 +73,10 @@ export function AuthExtras({
           disabled={disabled}
         >
           <div className="flex w-45 items-center gap-2">
-            <SiFacebook className="text-blue-900" />
+            <SiFacebook
+              aria-hidden="true"
+              className="text-blue-900"
+            />
             <span className="text-foreground">{cfg.verb} with Facebook</span>
           </div>
         </Button>
@@ -83,7 +86,7 @@ export function AuthExtras({
         {cfg.question}{" "}
         <Link
           href={cfg.actionHref}
-          className="text-primary hover:underline"
+          className="text-blue-500 hover:underline"
         >
           {cfg.actionLabel}
         </Link>

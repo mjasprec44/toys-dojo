@@ -69,7 +69,7 @@ export function Form<const F extends readonly FieldConfig[]>({
                 {field.type !== "checkbox" && (
                   <Label
                     htmlFor={field.name}
-                    className="text-gray-700"
+                    className="text-foreground"
                   >
                     {field.label}
                   </Label>

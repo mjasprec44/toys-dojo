@@ -129,8 +129,12 @@ export function ProductDetailsDrawer({ product }: { product: IProduct }) {
     >
       <DrawerTrigger
         render={
-          <Button variant="ghost">
-            <ChevronRightCircle />
+          <Button
+            variant="ghost"
+            aria-label={`Actions for ${product.name}`}
+            type="button"
+          >
+            <ChevronRightCircle aria-hidden="true" />
           </Button>
         }
       />

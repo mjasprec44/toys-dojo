@@ -28,11 +28,10 @@ const DroppableColumn = ({
   boardId,
   sortedColumns,
 }: DroppableColumnProps) => {
-  console.log(column);
   const sortedProduct =
     column.products?.sort((a, b) => a.order - b.order) || [];
   return (
-    <Card className="min-w-75 shrink-0 p-0 shadow-md">
+    <Card className="min-w-75 shrink-0 p-0">
       <CardHeader className={`${config.color} rounded-t-lg py-3 text-white`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

@@ -77,7 +77,10 @@ function CreateProductDialog({ columnId, boardId }: CreateProductDialogProps) {
       }}
       onSubmit={handleSubmit}
       trigger={
-        <Button variant="outline">
+        <Button
+          variant="outline"
+          className="hover:cursor-pointer hover:shadow-md"
+        >
           <Plus /> Add Item
         </Button>
       }

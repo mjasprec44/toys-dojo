@@ -10,7 +10,7 @@ export default function AuthButtons() {
         className=""
       >
         <Button
-          className="text-gray-700 hover:cursor-pointer hover:text-black"
+          className="text-foreground hover:cursor-pointer"
           variant="ghost"
         >
           Sign In
@@ -20,7 +20,7 @@ export default function AuthButtons() {
         href={ROUTES.SIGN_UP}
         className=""
       >
-        <Button className="hover:bg-primary/80 hover:cursor-pointer">
+        <Button className="hover:bg-primary hover:cursor-pointer">
           Sign Up
         </Button>
       </Link>

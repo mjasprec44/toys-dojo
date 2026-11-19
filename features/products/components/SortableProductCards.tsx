@@ -26,11 +26,11 @@ const ProductCard = ({
   product: IProduct;
   columns: IColumn[];
 }) => {
-  const { name, condition, price, images, slug } = product;
+  const { name, condition, price, images, slug, order } = product;
   const badge = getBadgeConfig(condition);
   return (
     <Card className="group relative cursor-pointer py-0 shadow-sm transition-shadow hover:shadow-lg">
-      <CardContent className="w-72 max-w-72 border p-2">
+      <CardContent className="w-72 max-w-72 p-2">
         <div className="flex gap-2">
           <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md">
             <Image
@@ -39,6 +39,7 @@ const ProductCard = ({
               fill
               sizes="96px"
               className="object-cover"
+              loading={order < 1 ? "eager" : "lazy"}
             />
           </div>
           <div className="flex max-w-36 min-w-0 flex-1 flex-col justify-between gap-1 py-2">

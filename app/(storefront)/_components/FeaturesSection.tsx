@@ -2,18 +2,18 @@ import { Package, Store, LayoutDashboard } from "lucide-react";
 
 function FeaturesSection() {
   return (
-    <section className="border-t bg-background py-24">
+    <section className="bg-background border-t py-24">
       <div className="container mx-auto px-4">
         <div className="grid gap-12 md:grid-cols-3">
           {/* Feature 1: Listing Management */}
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row justify-between items-center">
-              <h3 className="text-2xl font-semibold text-foreground">
+            <div className="flex flex-row items-center justify-between">
+              <h2 className="text-foreground text-2xl font-semibold">
                 List & Sell Your Figures
-              </h3>
+              </h2>
 
               <div className="inline-flex h-12 w-12 items-center justify-center">
-                <Package className="h-6 w-6 text-foreground" />
+                <Package className="text-foreground h-6 w-6" />
               </div>
             </div>
 
@@ -27,13 +27,13 @@ function FeaturesSection() {
           {/* Feature 2: The Marketplace */}
 
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row justify-between items-center">
-              <h3 className="text-2xl font-semibold text-foreground">
+            <div className="flex flex-row items-center justify-between">
+              <h2 className="text-foreground text-2xl font-semibold">
                 Explore the Marketplace
-              </h3>
+              </h2>
 
               <div className="inline-flex h-12 w-12 items-center justify-center">
-                <Store className="h-6 w-6 text-foreground" />
+                <Store className="text-foreground h-6 w-6" />
               </div>
             </div>
 
@@ -47,13 +47,13 @@ function FeaturesSection() {
           {/* Feature 3: User Dashboard */}
 
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row justify-between items-center">
-              <h3 className="text-2xl font-semibold text-foreground">
+            <div className="flex flex-row items-center justify-between">
+              <h2 className="text-foreground text-2xl font-semibold">
                 Manage Your Collection
-              </h3>
+              </h2>
 
               <div className="inline-flex h-12 w-12 items-center justify-center">
-                <LayoutDashboard className="h-6 w-6 text-foreground" />
+                <LayoutDashboard className="text-foreground h-6 w-6" />
               </div>
             </div>
 
