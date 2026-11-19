@@ -29,7 +29,7 @@ const ProductCard = ({
   const { name, condition, price, images, slug, order } = product;
   const badge = getBadgeConfig(condition);
   return (
-    <Card className="group relative cursor-pointer py-0 shadow-sm transition-shadow hover:shadow-lg">
+    <Card className="group relative cursor-grab py-0 shadow-sm transition-shadow hover:shadow-lg">
       <CardContent className="w-72 max-w-72 p-2">
         <div className="flex gap-2">
           <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md">
